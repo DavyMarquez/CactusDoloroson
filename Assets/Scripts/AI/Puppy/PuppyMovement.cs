@@ -29,6 +29,7 @@ public class PuppyMovement : MonoBehaviour
     private bool follow = true;
 
     private float fleeDir = 1.0f;
+    private bool wandering = false;
 
     // Start is called before the first frame update
     void Start()
@@ -91,7 +92,10 @@ public class PuppyMovement : MonoBehaviour
 
         if (Vector2.Distance(currentPos, playerPos) > detectionArea) // Follow/flee player
         {
-            StartCoroutine(Wander(2000));
+            if (!wandering)
+            {
+                StartCoroutine(Wander(2));
+            }
         }
         else {
             desiredSpeed = distanceVector * speed;
@@ -154,19 +158,19 @@ public class PuppyMovement : MonoBehaviour
 
     IEnumerator Wander(float WaitTime)
     {
+        wandering = true;
+
+        Vector3 aux = Quaternion.Euler(0, 0, Random.Range(-180.0f, 180.0f)) * currentSpeed.normalized;
+
+        desiredSpeed = speed * new Vector2(aux.x, aux.y);
 
         float timeAtEnter = Time.time;
-       
         while (WaitTime > Time.time - timeAtEnter)
         {
             yield return null;
            
         }
 
-        Vector3 aux = Quaternion.Euler(0, 0, Random.Range(-180.0f, 180.0f)) * currentSpeed.normalized;
-
-        desiredSpeed = speed * new Vector2(aux.x, aux.y);
-
-
+        wandering = false;
     }
 }
