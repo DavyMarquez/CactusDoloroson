@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody2D rigidBody;
 
     // player speed
     [Min(0)]
@@ -21,8 +20,6 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rigidBody = GetComponent<Rigidbody2D>();
-
 
     }
 
@@ -30,19 +27,14 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // Get input direction
-        Vector2 direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        //direction.Normalize();
+        Vector2 direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        direction.Normalize();
 
-        Debug.Log("input : " + direction);
+        // Calculate new position
+        Vector2 newPos = new Vector2(transform.position.x, transform.position.y) + speed * direction * Time.deltaTime;
 
-        Vector2 pos = transform.position;
-
-        // Move rigidbody
-       // rigidBody.MovePosition(pos + direction * speed * Time.deltaTime);
-
-        Vector2 newPos = new Vector2(pos.x, pos.y) + speed * direction * Time.deltaTime;
-
-        //transform.position = new Vector3(newPos.x, newPos.y, 0.0f);
+        // Update position
+        transform.position = new Vector3(newPos.x, newPos.y, 0.0f);
 
 
     }
