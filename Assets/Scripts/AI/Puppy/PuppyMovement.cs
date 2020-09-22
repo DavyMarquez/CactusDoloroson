@@ -76,12 +76,12 @@ public class PuppyMovement : MonoBehaviour
             }
         }
 
-        RaycastHit2D hit = Physics2D.Raycast(currentPos, currentSpeed.normalized, 1.5f);
+        RaycastHit2D hit = Physics2D.Raycast(currentPos, currentSpeed.normalized, 2.0f);
 
         Vector2 wallAvoidance = new Vector2(0.0f, 0.0f);
 
         Color color = new Color(1.0f, 0.0f, 1.0f);
-
+        
         if (hit.collider != null && hit.transform.gameObject.tag != "Puppy" && hit.transform.gameObject.tag != "Player")
         {
 
