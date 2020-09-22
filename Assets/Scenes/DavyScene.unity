@@ -466,18 +466,27 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1474522186, guid: a45806ededa3b954d9679a8fc36b969b, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1474522186, guid: a45806ededa3b954d9679a8fc36b969b, type: 3}
       propertyPath: m_Constraints
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5573422759254690462, guid: a45806ededa3b954d9679a8fc36b969b,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7512997922177722228, guid: a45806ededa3b954d9679a8fc36b969b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.83
+      value: 16.5
       objectReference: {fileID: 0}
     - target: {fileID: 7512997922177722228, guid: a45806ededa3b954d9679a8fc36b969b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.93
+      value: -7.57
       objectReference: {fileID: 0}
     - target: {fileID: 7512997922177722228, guid: a45806ededa3b954d9679a8fc36b969b,
         type: 3}
@@ -529,7 +538,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Puppy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7512997922177722231, guid: a45806ededa3b954d9679a8fc36b969b,
+        type: 3}
+      propertyPath: speed
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1474522186, guid: a45806ededa3b954d9679a8fc36b969b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a45806ededa3b954d9679a8fc36b969b, type: 3}
 --- !u!1001 &8606589099340878167
 PrefabInstance:
@@ -538,10 +553,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8606589099877072082, guid: 934269bfd827c404db4e22334efe2a57,
+        type: 3}
+      propertyPath: speed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8606589099877072083, guid: 934269bfd827c404db4e22334efe2a57,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.26
+      value: -3.99
       objectReference: {fileID: 0}
     - target: {fileID: 8606589099877072083, guid: 934269bfd827c404db4e22334efe2a57,
         type: 3}

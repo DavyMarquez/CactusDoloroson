@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 7512997922177722228}
   - component: {fileID: 7512997922177722231}
   - component: {fileID: 1474522186}
-  - component: {fileID: 1474522185}
+  - component: {fileID: 5573422759254690462}
   m_Layer: 0
   m_Name: Puppy
   m_TagString: Puppy
@@ -129,8 +129,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puppyList: []
   player: {fileID: 0}
-  area: 0.75
-  speed: 6
+  area: 1.4
+  speed: 1
 --- !u!50 &1474522186
 Rigidbody2D:
   serializedVersion: 4
@@ -151,9 +151,9 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &1474522185
-BoxCollider2D:
+  m_Constraints: 4
+--- !u!58 &5573422759254690462
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -166,15 +166,5 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.7

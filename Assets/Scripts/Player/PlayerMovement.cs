@@ -34,8 +34,10 @@ public class PlayerMovement : MonoBehaviour
         Vector2 newPos = new Vector2(transform.position.x, transform.position.y) + speed * direction * Time.deltaTime;
 
         // Update position
-        transform.position = new Vector3(newPos.x, newPos.y, 0.0f);
+        //transform.position = new Vector3(newPos.x, newPos.y, 0.0f);
+        Vector2 currentPos = transform.position;
 
+        GetComponent<Rigidbody2D>().MovePosition(currentPos + speed * direction * Time.deltaTime);
 
     }
 }
