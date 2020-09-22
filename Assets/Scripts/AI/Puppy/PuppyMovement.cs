@@ -21,17 +21,33 @@ public class PuppyMovement : MonoBehaviour
     private Vector2 currentSpeed;
     private Vector2 prevSpeed;
 
+    private bool follow = true;
+
+    private float fleeDir = 1.0f;
+
     // Start is called before the first frame update
     void Start()
     {
         puppyList = GameObject.FindGameObjectsWithTag("Puppy").ToList();
         puppyList.Remove(gameObject);
         player = GameObject.FindGameObjectWithTag("Player");
+
+        if (Random.Range(0.0f, 1.0f) > 0.5f)
+        {
+            fleeDir = -1.0f;
+        }
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (Input.GetKey("space") )
+        {
+            follow = !follow;
+            Debug.Log("Follow = " + follow);
+        }
 
         // UPDATE PUPPY LIST
         // puppy manager?¿
@@ -70,9 +86,13 @@ public class PuppyMovement : MonoBehaviour
         distanceVector.Normalize();
 
         Vector2 desiredSpeed = distanceVector * speed;
-
-
-        
+        if (!follow)
+        {
+            Vector3 aux = Quaternion.Euler(0, 0, 90) * desiredSpeed.normalized;
+            
+            desiredSpeed = aux * speed * fleeDir;
+           
+        }
 
         Vector2 separationVector = new Vector2(0.0f, 0.0f);
 
@@ -85,10 +105,6 @@ public class PuppyMovement : MonoBehaviour
             }
         }
 
-        
-
-        Vector2 wallAvoidance = new Vector2(0.0f, 0.0f);
-
         Vector3 auxPerp = Quaternion.Euler(0, 0, 90) * currentSpeed.normalized;
 
         Vector2 perpendicular = new Vector2(auxPerp.x, auxPerp.y);
@@ -99,9 +115,10 @@ public class PuppyMovement : MonoBehaviour
         // Check sides possible collision
         Vector2 rightSide = currentPos + perpendicular * 0.7f;
         Vector2 leftSide = currentPos - perpendicular * 0.7f;
-        //Debug.DrawLine(rightSide, rightSide + currentSpeed.normalized * 6.0f, Color.yellow);
-        //Debug.DrawLine(leftSide, leftSide + currentSpeed.normalized * 6.0f, Color.yellow);
+        Debug.DrawLine(rightSide, rightSide + currentSpeed.normalized * 6.0f, Color.yellow);
+        Debug.DrawLine(leftSide, leftSide + currentSpeed.normalized * 6.0f, Color.yellow);
 
+        Vector2 wallAvoidance = new Vector2(0.0f, 0.0f);
         RaycastHit2D rightHit = Physics2D.Raycast(rightSide, prevSpeed.normalized, 3.0f);
         RaycastHit2D leftHit = Physics2D.Raycast(leftSide, prevSpeed.normalized, 3.0f);
         if (rightHit.collider != null && rightHit.transform.gameObject.tag != "Puppy" 
