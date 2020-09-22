@@ -39,25 +39,6 @@ public class PlayerMovement : MonoBehaviour
         //transform.position = new Vector3(newPos.x, newPos.y, 0.0f);
         Vector2 currentPos = transform.position;
 
-        /*if (direction.x > 0)
-        {
-            animator.SetBool("IsLookingRight", true);
-            animator.SetBool("IsWalking", true);
-        }
-        else if(direction.x < 0)
-        {
-            animator.SetBool("IsLookingRight", false);
-            animator.SetBool("IsWalking", true);
-        }
-        else if(direction.y != 0)
-        {
-            animator.SetBool("IsWalking", true);
-        }
-        else
-        {
-            animator.SetBool("IsWalking", false);
-        }*/
-
         if (direction.x != 0)
         {
             animator.SetBool("IsLookingRight", direction.x > 0 ? true : false);
