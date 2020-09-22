@@ -86,6 +86,8 @@ public class PuppyMovement : MonoBehaviour
         Vector2 currentPos = transform.position;
         Vector2 playerPos = player.transform.position;
 
+        Color color = Color.red;
+
         Vector2 distanceVector = playerPos - currentPos;
 
         distanceVector.Normalize();
@@ -96,11 +98,17 @@ public class PuppyMovement : MonoBehaviour
             {
                 StartCoroutine(Wander(2));
             }
+            else
+            {
+                color = Color.green;
+            }
         }
         else {
             desiredSpeed = distanceVector * speed;
             if (!follow)
             {
+                
+                color = Color.yellow;
                 Vector3 aux = Quaternion.Euler(0, 0, 90) * desiredSpeed.normalized;
 
                 desiredSpeed = aux * speed * fleeDir;
@@ -129,8 +137,8 @@ public class PuppyMovement : MonoBehaviour
         // Check sides possible collision
         Vector2 rightSide = currentPos + perpendicular * 0.7f;
         Vector2 leftSide = currentPos - perpendicular * 0.7f;
-        Debug.DrawLine(rightSide, rightSide + currentSpeed.normalized * 6.0f, Color.yellow);
-        Debug.DrawLine(leftSide, leftSide + currentSpeed.normalized * 6.0f, Color.yellow);
+        Debug.DrawLine(rightSide, rightSide + currentSpeed.normalized * 6.0f, color);
+        Debug.DrawLine(leftSide, leftSide + currentSpeed.normalized * 6.0f, color);
 
         Vector2 wallAvoidance = new Vector2(0.0f, 0.0f);
         RaycastHit2D rightHit = Physics2D.Raycast(rightSide, currentSpeed.normalized, 3.0f);
