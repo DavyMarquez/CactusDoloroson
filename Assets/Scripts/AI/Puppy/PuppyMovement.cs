@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using System.Collections;
+using UnityEditor;
 
 public class PuppyMovement : MonoBehaviour
 {
@@ -18,8 +20,11 @@ public class PuppyMovement : MonoBehaviour
     // Puppy speed
     public float speed = 6.0f;
 
+    // Distance to follow or flee
+    public float detectionArea = 10.0f;
+
     private Vector2 currentSpeed;
-    private Vector2 prevSpeed;
+    private Vector2 desiredSpeed;
 
     private bool follow = true;
 
@@ -36,7 +41,8 @@ public class PuppyMovement : MonoBehaviour
         {
             fleeDir = -1.0f;
         }
-
+        float sqrtSpeed = Mathf.Sqrt(speed);
+        currentSpeed = new Vector2(Random.Range(-sqrtSpeed, sqrtSpeed), Random.Range(-sqrtSpeed, sqrtSpeed));
     }
 
     // Update is called once per frame
@@ -46,7 +52,6 @@ public class PuppyMovement : MonoBehaviour
         if (Input.GetKey("space") )
         {
             follow = !follow;
-            Debug.Log("Follow = " + follow);
         }
 
         // UPDATE PUPPY LIST
@@ -70,7 +75,6 @@ public class PuppyMovement : MonoBehaviour
 
        // GetComponent<Rigidbody2D>().MovePosition(currentPos + currentSpeed * Time.deltaTime);
         // MAKE PUPPY LOOK AT FOLLOW DIRECTION
-        prevSpeed = currentSpeed;
     }
 
     // VISION CONE¿?
@@ -85,13 +89,19 @@ public class PuppyMovement : MonoBehaviour
 
         distanceVector.Normalize();
 
-        Vector2 desiredSpeed = distanceVector * speed;
-        if (!follow)
+        if (Vector2.Distance(currentPos, playerPos) > detectionArea) // Follow/flee player
         {
-            Vector3 aux = Quaternion.Euler(0, 0, 90) * desiredSpeed.normalized;
-            
-            desiredSpeed = aux * speed * fleeDir;
-           
+            StartCoroutine(Wander(2000));
+        }
+        else {
+            desiredSpeed = distanceVector * speed;
+            if (!follow)
+            {
+                Vector3 aux = Quaternion.Euler(0, 0, 90) * desiredSpeed.normalized;
+
+                desiredSpeed = aux * speed * fleeDir;
+
+            }
         }
 
         Vector2 separationVector = new Vector2(0.0f, 0.0f);
@@ -119,8 +129,8 @@ public class PuppyMovement : MonoBehaviour
         Debug.DrawLine(leftSide, leftSide + currentSpeed.normalized * 6.0f, Color.yellow);
 
         Vector2 wallAvoidance = new Vector2(0.0f, 0.0f);
-        RaycastHit2D rightHit = Physics2D.Raycast(rightSide, prevSpeed.normalized, 3.0f);
-        RaycastHit2D leftHit = Physics2D.Raycast(leftSide, prevSpeed.normalized, 3.0f);
+        RaycastHit2D rightHit = Physics2D.Raycast(rightSide, currentSpeed.normalized, 3.0f);
+        RaycastHit2D leftHit = Physics2D.Raycast(leftSide, currentSpeed.normalized, 3.0f);
         if (rightHit.collider != null && rightHit.transform.gameObject.tag != "Puppy" 
             && rightHit.transform.gameObject.tag != "Player")
         {
@@ -139,6 +149,23 @@ public class PuppyMovement : MonoBehaviour
 
         Vector2 steering = desiredSpeed - currentSpeed;
         currentSpeed += steering * Time.deltaTime;
+
+    }
+
+    IEnumerator Wander(float WaitTime)
+    {
+
+        float timeAtEnter = Time.time;
+       
+        while (WaitTime > Time.time - timeAtEnter)
+        {
+            yield return null;
+           
+        }
+
+        Vector3 aux = Quaternion.Euler(0, 0, Random.Range(-180.0f, 180.0f)) * currentSpeed.normalized;
+
+        desiredSpeed = speed * new Vector2(aux.x, aux.y);
 
 
     }
