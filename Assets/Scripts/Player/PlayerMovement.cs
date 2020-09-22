@@ -39,8 +39,35 @@ public class PlayerMovement : MonoBehaviour
         //transform.position = new Vector3(newPos.x, newPos.y, 0.0f);
         Vector2 currentPos = transform.position;
 
-        GetComponent<Rigidbody2D>().MovePosition(currentPos + speed * direction * Time.deltaTime);
+        /*if (direction.x > 0)
+        {
+            animator.SetBool("IsLookingRight", true);
+            animator.SetBool("IsWalking", true);
+        }
+        else if(direction.x < 0)
+        {
+            animator.SetBool("IsLookingRight", false);
+            animator.SetBool("IsWalking", true);
+        }
+        else if(direction.y != 0)
+        {
+            animator.SetBool("IsWalking", true);
+        }
+        else
+        {
+            animator.SetBool("IsWalking", false);
+        }*/
 
-        animator.SetFloat("MoveDirection",  speed * direction.x);
+        if (direction.x != 0)
+        {
+            animator.SetBool("IsLookingRight", direction.x > 0 ? true : false);
+            animator.SetBool("IsWalking", true);
+        }
+        else
+        {
+            animator.SetBool("IsWalking", direction.y != 0 ? true : false);
+        }
+
+        GetComponent<Rigidbody2D>().MovePosition(currentPos + speed * direction * Time.deltaTime);
     }
 }
