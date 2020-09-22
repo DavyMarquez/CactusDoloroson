@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     [Min(0)]
     public float speed = 10.0f;
 
+    public Animator animator;
+
     // getter and setter
     public float Speed
     {
@@ -39,5 +41,6 @@ public class PlayerMovement : MonoBehaviour
 
         GetComponent<Rigidbody2D>().MovePosition(currentPos + speed * direction * Time.deltaTime);
 
+        animator.SetFloat("MoveDirection",  speed * direction.x);
     }
 }
