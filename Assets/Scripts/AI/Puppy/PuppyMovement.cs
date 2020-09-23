@@ -12,12 +12,15 @@ public class PuppyMovement : MonoBehaviour
     private GameObject player;
 
     // Area of effect of separation from others puppies 
+    [Min(0.0f)]
     public float area = 1.5f;
 
     // Puppy speed
+    [Min(0.0f)]
     public float speed = 6.0f;
 
     // Distance to follow or flee
+    [Min(0.0f)]
     public float detectionArea = 10.0f;
 
     private bool follow = true;

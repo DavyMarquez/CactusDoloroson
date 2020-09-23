@@ -7,6 +7,9 @@ public class AIAttack : MonoBehaviour
 {
     [SerializeField]
     private Collider2D trigger;
+
+    private AIStats aiStats;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +22,7 @@ public class AIAttack : MonoBehaviour
                 break;
             }
         }
+        aiStats = gameObject.GetComponent<AIStats>();
     }
 
     // Update is called once per frame
@@ -31,6 +35,12 @@ public class AIAttack : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            PlayerStats playerStats = collision.gameObject.GetComponent<PlayerStats>();
+            if (playerStats != null)
+            {
+                
+                playerStats.IncreaseSorrow(aiStats.Sorrow);
+            }
             Destroy(gameObject);
         }
     }

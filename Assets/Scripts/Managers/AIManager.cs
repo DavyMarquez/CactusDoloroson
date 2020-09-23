@@ -7,7 +7,7 @@ public class AIManager : MonoBehaviour
 
     // All ais in the scene
     [SerializeField]
-    private List<GameObject> aiList;
+    private List<GameObject> aiList = new List<GameObject>();
 
     public List<GameObject> AIList
     {

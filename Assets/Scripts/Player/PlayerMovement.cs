@@ -6,11 +6,18 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
+    [Min(1.0f)]
+    public float buffSpeedMultiplayer = 2.0f;
+
     // player speed
     [Min(0)]
     public float speed = 10.0f;
 
     public Animator animator;
+
+    private bool speedBuff = false;
+
+    private float currentSpeed = 0.0f;
 
     // getter and setter
     public float Speed
@@ -49,6 +56,25 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("IsWalking", direction.y != 0 ? true : false);
         }
 
-        GetComponent<Rigidbody2D>().MovePosition(currentPos + speed * direction * Time.deltaTime);
+        if (speedBuff)
+        {
+            currentSpeed = buffSpeedMultiplayer * speed;
+        }
+        else
+        {
+            currentSpeed = speed;
+        }
+
+        GetComponent<Rigidbody2D>().MovePosition(currentPos + currentSpeed * direction * Time.deltaTime);
+    }
+
+    public void ApplySpeedBuff()
+    {
+        speedBuff = true;
+    }
+
+    public void RemoveSpeedBuff()
+    {
+        speedBuff = false;
     }
 }
