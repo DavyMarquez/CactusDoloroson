@@ -6,10 +6,7 @@ using UnityEditor;
 
 public class PuppyMovement : MonoBehaviour
 {
-
-    // All puppies in the scene (change for sphere collision for better performance?)
-    [SerializeField]
-    private List<GameObject> puppyList;
+    AIManager aiManager;
 
     [SerializeField]
     private GameObject player;
@@ -23,19 +20,37 @@ public class PuppyMovement : MonoBehaviour
     // Distance to follow or flee
     public float detectionArea = 10.0f;
 
-    private Vector2 currentSpeed;
-    private Vector2 desiredSpeed;
-
     private bool follow = true;
 
     private float fleeDir = 1.0f;
     private bool wandering = false;
 
+    private Vector2 currentSpeed;
+    private Vector2 desiredSpeed;
+    private Vector2 currentPos;
+    private Vector2 playerPos;
+    // Distance between AI and player
+    private Vector2 distanceVector;
+    // Aggregated sum of separation between AIs
+    private Vector2 separationVector;
+    // For smooth turns
+    private Vector2 steering;
+
+    private Vector2 rightSide;
+    private Vector2 leftSide;
+    private Vector2 wallAvoidance;
+
     // Start is called before the first frame update
     void Start()
     {
-        puppyList = GameObject.FindGameObjectsWithTag("Puppy").ToList();
-        puppyList.Remove(gameObject);
+        aiManager = FindObjectOfType<AIManager>();
+        if(aiManager == null)
+        {
+            Debug.LogError("No AIManager found in scene");
+        }
+        // Add this gameobject to ai list
+        aiManager.AddAI(gameObject);
+
         player = GameObject.FindGameObjectWithTag("Player");
 
         if (Random.Range(0.0f, 1.0f) > 0.5f)
@@ -54,13 +69,7 @@ public class PuppyMovement : MonoBehaviour
         {
             follow = !follow;
         }
-
-        // UPDATE PUPPY LIST
-        // puppy manager?¿
-
-        Vector2 currentPos = transform.position;
-        Vector2 playerPos = player.transform.position;
-
+        
         Steering();
 
         if(currentSpeed.magnitude > speed)
@@ -74,21 +83,17 @@ public class PuppyMovement : MonoBehaviour
         // Update position
         transform.position = new Vector3(newPos.x, newPos.y, 0.0f);
 
-       // GetComponent<Rigidbody2D>().MovePosition(currentPos + currentSpeed * Time.deltaTime);
         // MAKE PUPPY LOOK AT FOLLOW DIRECTION
     }
 
-    // VISION CONE¿?
-
-
     void Steering()
     {
-        Vector2 currentPos = transform.position;
-        Vector2 playerPos = player.transform.position;
+        currentPos = transform.position;
+        playerPos = player.transform.position;
 
         Color color = Color.red;
 
-        Vector2 distanceVector = playerPos - currentPos;
+        distanceVector = playerPos - currentPos;
 
         distanceVector.Normalize();
 
@@ -116,12 +121,12 @@ public class PuppyMovement : MonoBehaviour
             }
         }
 
-        Vector2 separationVector = new Vector2(0.0f, 0.0f);
+        separationVector = new Vector2(0.0f, 0.0f);
 
-
-        foreach(GameObject p in puppyList)
+        Vector2 distance;
+        foreach (GameObject p in aiManager.AIList)
         {
-            Vector2 distance = currentPos - new Vector2(p.transform.position.x, p.transform.position.y);
+            distance = currentPos - new Vector2(p.transform.position.x, p.transform.position.y);
             if(distance.magnitude <= area){
                 separationVector += distance;
             }
@@ -132,15 +137,14 @@ public class PuppyMovement : MonoBehaviour
         Vector2 perpendicular = new Vector2(auxPerp.x, auxPerp.y);
         perpendicular.Normalize();
 
-        //Debug.DrawLine(currentPos, currentPos + currentSpeed.normalized * 6.0f, Color.red);
 
         // Check sides possible collision
-        Vector2 rightSide = currentPos + perpendicular * 0.7f;
-        Vector2 leftSide = currentPos - perpendicular * 0.7f;
+        rightSide = currentPos + perpendicular * 0.7f;
+        leftSide = currentPos - perpendicular * 0.7f;
         Debug.DrawLine(rightSide, rightSide + currentSpeed.normalized * 6.0f, color);
         Debug.DrawLine(leftSide, leftSide + currentSpeed.normalized * 6.0f, color);
 
-        Vector2 wallAvoidance = new Vector2(0.0f, 0.0f);
+        wallAvoidance = new Vector2(0.0f, 0.0f);
         RaycastHit2D rightHit = Physics2D.Raycast(rightSide, currentSpeed.normalized, 3.0f);
         RaycastHit2D leftHit = Physics2D.Raycast(leftSide, currentSpeed.normalized, 3.0f);
         if (rightHit.collider != null && rightHit.transform.gameObject.tag != "Puppy" 
@@ -159,7 +163,7 @@ public class PuppyMovement : MonoBehaviour
         
         currentSpeed = currentSpeed + separationVector + wallAvoidance / 2.0f;
 
-        Vector2 steering = desiredSpeed - currentSpeed;
+        steering = desiredSpeed - currentSpeed;
         currentSpeed += steering * Time.deltaTime;
 
     }
@@ -180,5 +184,10 @@ public class PuppyMovement : MonoBehaviour
         }
 
         wandering = false;
+    }
+
+    private void OnDestroy()
+    {
+        aiManager.RemoveAI(gameObject);
     }
 }
