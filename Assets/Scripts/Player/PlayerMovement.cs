@@ -29,6 +29,9 @@ public class PlayerMovement : MonoBehaviour
         get { return direction; }
     }
 
+    private bool isLookingRight = false;
+    
+
     [SerializeField]
     private float huggingTime = 0.21f;
 
@@ -43,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
+        isLookingRight = animator.GetBool("IsLookingRight");
     }
 
     // Update is called once per frame
@@ -66,17 +70,30 @@ public class PlayerMovement : MonoBehaviour
         direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         direction.Normalize();
 
-        
+
 
         //Check the direction and if Julia is walking or not and make the proper animation
-        if (direction.x != 0)
+        if (!animator.GetBool("IsHugging"))
         {
-            animator.SetBool("IsLookingRight", direction.x > 0 ? true : false);
-            animator.SetBool("IsWalking", true);
+            if (direction.x != 0)
+            {
+                animator.SetBool("IsLookingRight", direction.x > 0 ? true : false);
+                animator.SetBool("IsWalking", true);
+            }
+            else
+            {
+                animator.SetBool("IsWalking", direction.y != 0 ? true : false);
+            }
+
+            isLookingRight = animator.GetBool("IsLookingRight");
         }
         else
         {
-            animator.SetBool("IsWalking", direction.y != 0 ? true : false);
+            if (isLookingRight && direction.x < 0 || !isLookingRight && direction.x > 0)
+            {
+                isLookingRight = !isLookingRight;
+                gameObject.GetComponent<Hug>().directionHasChanged = true;
+            }
         }
 
         if (speedBuff)

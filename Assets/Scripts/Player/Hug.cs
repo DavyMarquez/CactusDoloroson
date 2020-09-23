@@ -34,6 +34,8 @@ public class Hug : MonoBehaviour
 
     public bool somethingHugged = false;
 
+    public bool directionHasChanged = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,9 +64,28 @@ public class Hug : MonoBehaviour
             invulnerable = false;
         }
         animator.SetBool("IsHugging", true);
+
+        bool isLookingRight = animator.GetBool("IsLookingRight");
         
         while (huggingTime > Time.time - timeAtStart)
         {
+            if (directionHasChanged)
+            {
+                animator.SetBool("IsLookingRight", !isLookingRight);
+                directionHasChanged = false;
+                if (isLookingRight)
+                {
+                    //Hug animation looking left
+                    animator.CrossFadeInFixedTime("HugLeft", 0, -1, Time.time - timeAtStart);
+                }
+                else
+                {
+                    //Hug animation looking right
+                    animator.CrossFadeInFixedTime("HugRight", 0, -1, Time.time - timeAtStart);
+
+                }
+                isLookingRight = !isLookingRight;
+            }
             yield return null;
         }
         animator.SetBool("IsHugging", false);
