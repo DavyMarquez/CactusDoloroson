@@ -32,6 +32,8 @@ public class Hug : MonoBehaviour
 
     public bool hitWhileDashing = false;
 
+    public bool somethingHugged = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +49,6 @@ public class Hug : MonoBehaviour
         //Hug
         if (Input.GetKey("space") && !dashing)
         {
-           
             StartCoroutine(OnDash());
         }
 
@@ -58,17 +59,7 @@ public class Hug : MonoBehaviour
     IEnumerator OnHug()
     {
         float timeAtStart = Time.time;
-        //gameObject.GetComponent<Collider2D>().enabled = false;
-        Vector2 start = gameObject.transform.position;
-        RaycastHit2D hit = Physics2D.Raycast(start, playerMovement.Direction.normalized, 1.5f);
-        Debug.DrawLine(start, start + playerMovement.Direction.normalized * 1.5f, Color.green);
-        if (hit.transform && hit.transform.gameObject != null && 
-            hit.transform.gameObject.GetComponent<AIStats>() != null)
-        {
-            Debug.Log("Something Hugged");
-        }
-        else
-        {
+        if (!somethingHugged){
             invulnerable = false;
         }
         animator.SetBool("IsHugging", true);
@@ -78,18 +69,20 @@ public class Hug : MonoBehaviour
             yield return null;
         }
         animator.SetBool("IsHugging", false);
+        invulnerable = false;
+        somethingHugged = false;
     }
 
     IEnumerator OnDash()
     {
-        hitWhileDashing = false;
+        somethingHugged = false;
         dashing = true;
         invulnerable = true;
         playerMovement.Dashing(dashSpeed);
         float timeAtStart = Time.time;
         while (dashTime > Time.time - timeAtStart)
         {
-            if (hitWhileDashing)
+            if (somethingHugged)
             {
                 break;
             }

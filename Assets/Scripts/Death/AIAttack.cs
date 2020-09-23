@@ -17,7 +17,7 @@ public class AIAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Collider2D[] collisionArray = FindObjectsOfType<Collider2D>();
+        Collider2D[] collisionArray = gameObject.GetComponents<Collider2D>();
         foreach(Collider2D c in collisionArray)
         {
             if (c.isTrigger)
@@ -45,16 +45,27 @@ public class AIAttack : MonoBehaviour
             PlayerStats playerStats = collision.gameObject.GetComponent<PlayerStats>();
             if (collision.gameObject.GetComponent<Hug>().invulnerable)
             {
-                collision.gameObject.GetComponent<Hug>().hitWhileDashing = true;
-                if (playerStats != null)
+                if (!collision.gameObject.GetComponent<Hug>().somethingHugged)
                 {
-                    
-                    playerStats.IncreaseLove(aiStats.Love);
+                    collision.gameObject.GetComponent<Hug>().somethingHugged = true;
+                    if (playerStats != null)
+                    {
+
+                        playerStats.IncreaseLove(aiStats.Love);
+                        playerStats.IncreaseSorrow(aiStats.Sorrow);
+
+                        StartCoroutine(Die());
+                    }
                 }
+               
             }
-            playerStats.IncreaseSorrow(aiStats.Sorrow);
+            else
+            {
+                playerStats.IncreaseSorrow(aiStats.Sorrow);
+
+                StartCoroutine(Die());
+            }
             
-            StartCoroutine(Die());
         }
     }
 
@@ -64,7 +75,7 @@ public class AIAttack : MonoBehaviour
         animator.SetBool("IsDead", true);
 
         Destroy(gameObject.GetComponent<Rigidbody2D>());
-        Collider2D[] collisionArray = FindObjectsOfType<Collider2D>();
+        Collider2D[] collisionArray = gameObject.GetComponents<Collider2D>();
         foreach (Collider2D collider in collisionArray){
             Destroy(collider);
         }
