@@ -5,25 +5,25 @@ using UnityEngine;
 // This class implements the functionality for the AI to "damage" the player
 public class AIAttack : MonoBehaviour
 {
-    [SerializeField]
-    private Collider2D trigger;
 
     private AIStats aiStats;
+
     [SerializeField]
     private float deathTimer = 2.0f;
 
     public Animator animator;
+    private GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         Collider2D[] collisionArray = gameObject.GetComponents<Collider2D>();
         foreach(Collider2D c in collisionArray)
         {
-            if (c.isTrigger)
+            if (!c.isTrigger)
             {
-                trigger = c;
-                break;
+                Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), c);
             }
         }
         aiStats = gameObject.GetComponent<AIStats>();
@@ -50,13 +50,13 @@ public class AIAttack : MonoBehaviour
                     collision.gameObject.GetComponent<Hug>().somethingHugged = true;
                     if (playerStats != null)
                     {
-
                         playerStats.IncreaseLove(aiStats.Love);
                         playerStats.IncreaseSorrow(aiStats.Sorrow);
 
                         StartCoroutine(Die());
                     }
                 }
+               
                
             }
             else
@@ -66,6 +66,38 @@ public class AIAttack : MonoBehaviour
                 StartCoroutine(Die());
             }
             
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision && collision.gameObject.tag == "Player")
+        {
+            PlayerStats playerStats = collision.gameObject.GetComponent<PlayerStats>();
+            if (collision.gameObject.GetComponent<Hug>().invulnerable)
+            {
+                if (!collision.gameObject.GetComponent<Hug>().somethingHugged)
+                {
+                    collision.gameObject.GetComponent<Hug>().somethingHugged = true;
+                    if (playerStats != null)
+                    {
+                        playerStats.IncreaseLove(aiStats.Love);
+                        playerStats.IncreaseSorrow(aiStats.Sorrow);
+
+                        StartCoroutine(Die());
+                    }
+                }
+
+
+            }
+            else
+            {
+                playerStats.IncreaseSorrow(aiStats.Sorrow);
+
+                StartCoroutine(Die());
+            }
+
         }
     }
 

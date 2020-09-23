@@ -51,8 +51,7 @@ public class Hug : MonoBehaviour
         {
             StartCoroutine(OnDash());
         }
-
-        //
+        
     }
 
     //Coroutine for the Hug animation
