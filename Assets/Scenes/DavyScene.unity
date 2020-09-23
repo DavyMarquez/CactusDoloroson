@@ -980,13 +980,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5910110768907342538, guid: 20b546085214b894aa9eed6672e44a20,
         type: 3}
-<<<<<<< HEAD
       propertyPath: buffSpeedMultiplayer
       value: 2
-=======
+      objectReference: {fileID: 0}
+    - target: {fileID: 5910110768907342538, guid: 20b546085214b894aa9eed6672e44a20,
+        type: 3}
       propertyPath: huggingTime
       value: 1
->>>>>>> d98e460565c74f0c4467df730e17d776b293d7d9
       objectReference: {fileID: 0}
     - target: {fileID: 5910110768907342539, guid: 20b546085214b894aa9eed6672e44a20,
         type: 3}

@@ -44,24 +44,27 @@ public class AIAttack : MonoBehaviour
             PlayerStats playerStats = collision.gameObject.GetComponent<PlayerStats>();
             if (playerStats != null)
             {
-                
                 playerStats.IncreaseSorrow(aiStats.Sorrow);
             }
-            Destroy(gameObject);
-
+            
             StartCoroutine(Die());
+
         }
     }
 
     IEnumerator Die()
     {
         float timeAtStart = Time.time;
-
         animator.SetBool("IsDead", true);
-        while(deathTimer > Time.time - timeAtStart)
+
+        Destroy(gameObject.GetComponent<Rigidbody2D>());
+        Destroy(gameObject.GetComponent<Collider2D>());
+
+        while (deathTimer > Time.time - timeAtStart)
         {
             yield return null;
         }
+
         Destroy(gameObject);
     }
 }
