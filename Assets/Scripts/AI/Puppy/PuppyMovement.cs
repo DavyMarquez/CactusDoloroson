@@ -74,12 +74,6 @@ public class PuppyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        if (Input.GetKey("space") )
-        {
-            follow = !follow;
-        }
-        */
 
         //Check if the puppy is dying
         if (animator.GetBool("IsDead")) return;
@@ -183,14 +177,14 @@ public class PuppyMovement : MonoBehaviour
         wallAvoidance = new Vector2(0.0f, 0.0f);
         RaycastHit2D rightHit = Physics2D.Raycast(rightSide, currentSpeed.normalized, 3.0f);
         RaycastHit2D leftHit = Physics2D.Raycast(leftSide, currentSpeed.normalized, 3.0f);
-        if (rightHit.collider != null && rightHit.transform.gameObject.tag != "Puppy" 
+        if (rightHit.collider != null && rightHit.transform.gameObject.tag != "AI" 
             && rightHit.transform.gameObject.tag != "Player")
         {
             wallAvoidance = currentSpeed - 2 * Vector2.Dot(currentSpeed, rightHit.normal) * rightHit.normal;
             //Debug.DrawLine(rightHit.point, rightHit.point + wallAvoidance.normalized * 1.5f, Color.green);
 
         }
-        else if(leftHit.collider != null && leftHit.transform.gameObject.tag != "Puppy"
+        else if(leftHit.collider != null && leftHit.transform.gameObject.tag != "AI"
             && leftHit.transform.gameObject.tag != "Player")
         {
             wallAvoidance = currentSpeed - 2 * Vector2.Dot(currentSpeed, leftHit.normal) * leftHit.normal;

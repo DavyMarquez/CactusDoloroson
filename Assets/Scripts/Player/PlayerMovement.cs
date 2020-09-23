@@ -105,14 +105,6 @@ public class PlayerMovement : MonoBehaviour
             currentSpeed = speed;
         }
 
-
-
-        //Hug
-       /* if (Input.GetKey("space"))
-        {
-            StartCoroutine(Hug());
-        }
-        */
         GetComponent<Rigidbody2D>().MovePosition(currentPos + speed * direction * Time.deltaTime);
     }
 
@@ -126,17 +118,6 @@ public class PlayerMovement : MonoBehaviour
         speedBuff = false;
     }
     
-    //Coroutine for the Hug animation
-    IEnumerator Hug()
-    {
-        animator.SetBool("IsHugging", true);
-        float timeAtStart = Time.time;
-        while(huggingTime > Time.time - timeAtStart)
-        {
-            yield return null;
-        }
-        animator.SetBool("IsHugging", false);
-    }
 
     public void Dashing(float newSpeed)
     {

@@ -12,6 +12,12 @@ public class Hug : MonoBehaviour
 
     [Min(0.0f)]
     public float dashTime = 0.5f;
+    
+    [Min(0.0f)]
+    public float dashBuffedDistance = 3.0f;
+
+    [Min(0.0f)]
+    public float dashBuffedTime = 0.5f;
 
     private float dashSpeed;
 
@@ -35,6 +41,8 @@ public class Hug : MonoBehaviour
     public bool somethingHugged = false;
 
     public bool directionHasChanged = false;
+
+    public bool dashBuff = false;
 
     // Start is called before the first frame update
     void Start()
@@ -98,9 +106,19 @@ public class Hug : MonoBehaviour
         somethingHugged = false;
         dashing = true;
         invulnerable = true;
-        playerMovement.Dashing(dashSpeed);
+        float dashTimeAux = dashTime;
+        if (dashBuff)
+        {
+            playerMovement.Dashing(dashBuffedDistance / dashBuffedTime);
+            dashTimeAux = dashBuffedTime;
+        }
+        else
+        {
+            playerMovement.Dashing(dashSpeed);
+        }
+        
         float timeAtStart = Time.time;
-        while (dashTime > Time.time - timeAtStart)
+        while (dashTimeAux > Time.time - timeAtStart)
         {
             if (somethingHugged)
             {
@@ -113,5 +131,9 @@ public class Hug : MonoBehaviour
         StartCoroutine(OnHug());
     }
 
+    public void ApplyDashBuff()
+    {
+        dashBuff = true;
+    }
 
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Puppy
   - Limit
+  - AI
   layers:
   - Default
   - TransparentFX

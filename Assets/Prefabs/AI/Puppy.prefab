@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 1474522194}
   m_Layer: 0
   m_Name: Puppy
-  m_TagString: Puppy
+  m_TagString: AI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -286,6 +286,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db18e9574ff31a74b91c210907010745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger: {fileID: 0}
   deathTimer: 2
   animator: {fileID: 1474522191}

@@ -51,6 +51,7 @@ public class PlayerStats : MonoBehaviour
         love = 0.0f;
         sorrow = 0.0f;
         speedBuffNotified = false;
+        dashBuffNotified = false;
         animator = gameObject.GetComponent<Animator>();
     }
 
@@ -116,7 +117,7 @@ public class PlayerStats : MonoBehaviour
         if (love >= dashBuffPercentage && !dashBuffNotified)
         {
             dashBuffNotified = true;
-            gameObject.GetComponent<PlayerMovement>().ApplySpeedBuff();
+            gameObject.GetComponent<Hug>().ApplyDashBuff();
         }
     }
 
