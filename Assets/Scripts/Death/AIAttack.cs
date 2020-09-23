@@ -64,7 +64,10 @@ public class AIAttack : MonoBehaviour
         animator.SetBool("IsDead", true);
 
         Destroy(gameObject.GetComponent<Rigidbody2D>());
-        Destroy(gameObject.GetComponent<Collider2D>());
+        Collider2D[] collisionArray = FindObjectsOfType<Collider2D>();
+        foreach (Collider2D collider in collisionArray){
+            Destroy(collider);
+        }
 
         while (deathTimer > Time.time - timeAtStart)
         {
