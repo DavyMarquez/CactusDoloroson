@@ -13,11 +13,21 @@ public class PlayerMovement : MonoBehaviour
     [Min(0)]
     public float speed = 10.0f;
 
-    public Animator animator;
+    private Animator animator;
 
     private bool speedBuff = false;
 
     private float currentSpeed = 0.0f;
+
+    private float dashSpeed = 0.0f;
+
+    private bool dashing = false;
+
+    private Vector2 direction;
+    public Vector2 Direction
+    {
+        get { return direction; }
+    }
 
     [SerializeField]
     private float huggingTime = 0.21f;
@@ -38,16 +48,25 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Update position
+        Vector2 currentPos = transform.position;
+
+        if (dashing)
+        {
+            Vector2 dashDir = direction;
+            if(dashDir.x == 0.0f && dashDir.y == 0.0f)
+            {
+                dashDir = GetFacingDirection();
+            }
+            GetComponent<Rigidbody2D>().MovePosition(currentPos + dashSpeed * dashDir * Time.deltaTime);
+            return;
+        }
+
         // Get input direction
-        Vector2 direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         direction.Normalize();
 
-        // Calculate new position
-        Vector2 newPos = new Vector2(transform.position.x, transform.position.y) + speed * direction * Time.deltaTime;
-
-        // Update position
-        //transform.position = new Vector3(newPos.x, newPos.y, 0.0f);
-        Vector2 currentPos = transform.position;
+        
 
         //Check the direction and if Julia is walking or not and make the proper animation
         if (direction.x != 0)
@@ -69,12 +88,14 @@ public class PlayerMovement : MonoBehaviour
             currentSpeed = speed;
         }
 
+
+
         //Hug
-        if (Input.GetKey("space"))
+       /* if (Input.GetKey("space"))
         {
             StartCoroutine(Hug());
         }
-
+        */
         GetComponent<Rigidbody2D>().MovePosition(currentPos + speed * direction * Time.deltaTime);
     }
 
@@ -98,5 +119,28 @@ public class PlayerMovement : MonoBehaviour
             yield return null;
         }
         animator.SetBool("IsHugging", false);
+    }
+
+    public void Dashing(float newSpeed)
+    {
+        dashing = true;
+        dashSpeed = newSpeed;
+    }
+
+    public void NoDashing()
+    {
+        dashing = false;
+    }
+
+    Vector2 GetFacingDirection()
+    {
+        if (animator.GetBool("IsLookingRight"))
+        {
+            return new Vector2(1.0f, 0.0f);
+        }
+        else
+        {
+            return new Vector2(-1.0f, 0.0f);
+        }
     }
 }

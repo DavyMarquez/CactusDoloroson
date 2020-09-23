@@ -39,16 +39,22 @@ public class AIAttack : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+
+        if (collision.collider && collision.gameObject.tag == "Player")
         {
             PlayerStats playerStats = collision.gameObject.GetComponent<PlayerStats>();
-            if (playerStats != null)
+            if (collision.gameObject.GetComponent<Hug>().invulnerable)
             {
-                playerStats.IncreaseSorrow(aiStats.Sorrow);
+                collision.gameObject.GetComponent<Hug>().hitWhileDashing = true;
+                if (playerStats != null)
+                {
+                    
+                    playerStats.IncreaseLove(aiStats.Love);
+                }
             }
+            playerStats.IncreaseSorrow(aiStats.Sorrow);
             
             StartCoroutine(Die());
-
         }
     }
 
