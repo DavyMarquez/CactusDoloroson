@@ -14,6 +14,7 @@ public class PlayerStats : MonoBehaviour
     [Range(0.0f, 100.0f)]
     public float dashBuffPercentage = 100.0f;
 
+    private Animator animator;
 
     [SerializeField]
     [Range(0.0f, 100.0f)]
@@ -50,6 +51,7 @@ public class PlayerStats : MonoBehaviour
         love = 0.0f;
         sorrow = 0.0f;
         speedBuffNotified = false;
+        animator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -61,6 +63,10 @@ public class PlayerStats : MonoBehaviour
         if(timeSinceLastInteraction > timeToIncreaseSorrow)
         {
             sorrow = Mathf.Min(sorrow + sorrowIncreaseRate * Time.deltaTime, 100.0f);
+        }
+        if (sorrow == 100.0f && !animator.GetBool("IsDying"))
+        {
+            StartCoroutine(GameOver());
         }
 
         Notify();
@@ -114,4 +120,16 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    IEnumerator GameOver()
+    {
+        Destroy(gameObject.GetComponent<PlayerMovement>());
+        animator.SetBool("IsDying", true);
+        GetComponent<Rigidbody2D>().MovePosition(transform.position);
+        float timeAtStart = Time.time;
+        while(3 > Time.time - timeAtStart)
+        {
+            yield return null;
+        }
+        Debug.Log("Muerto");
+    }
 }
