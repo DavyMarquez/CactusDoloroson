@@ -7,6 +7,12 @@ public class AIAttack : MonoBehaviour
 {
     [SerializeField]
     private Collider2D trigger;
+
+    [SerializeField]
+    private float deathTimer = 2.0f;
+
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +25,8 @@ public class AIAttack : MonoBehaviour
                 break;
             }
         }
+
+        animator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -31,7 +39,19 @@ public class AIAttack : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Destroy(gameObject);
+            StartCoroutine(Die());
         }
+    }
+
+    IEnumerator Die()
+    {
+        float timeAtStart = Time.time;
+
+        animator.SetBool("IsDead", true);
+        while(deathTimer > Time.time - timeAtStart)
+        {
+            yield return null;
+        }
+        Destroy(gameObject);
     }
 }

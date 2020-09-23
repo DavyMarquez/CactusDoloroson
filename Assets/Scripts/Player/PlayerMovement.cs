@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator animator;
 
+    [SerializeField]
+    private float huggingTime = 0.21f;
+
     // getter and setter
     public float Speed
     {
@@ -39,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
         //transform.position = new Vector3(newPos.x, newPos.y, 0.0f);
         Vector2 currentPos = transform.position;
 
+        //Check the direction and if Julia is walking or not and make the proper animation
         if (direction.x != 0)
         {
             animator.SetBool("IsLookingRight", direction.x > 0 ? true : false);
@@ -49,6 +53,24 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("IsWalking", direction.y != 0 ? true : false);
         }
 
+        //Hug
+        if (Input.GetKey("space"))
+        {
+            StartCoroutine(Hug());
+        }
+
         GetComponent<Rigidbody2D>().MovePosition(currentPos + speed * direction * Time.deltaTime);
+    }
+
+    //Coroutine for the Hug animation
+    IEnumerator Hug()
+    {
+        animator.SetBool("IsHugging", true);
+        float timeAtStart = Time.time;
+        while(huggingTime > Time.time - timeAtStart)
+        {
+            yield return null;
+        }
+        animator.SetBool("IsHugging", false);
     }
 }

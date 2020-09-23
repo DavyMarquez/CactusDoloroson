@@ -11,6 +11,8 @@ public class PuppyMovement : MonoBehaviour
     [SerializeField]
     private GameObject player;
 
+    public Animator animator;
+
     // Area of effect of separation from others puppies 
     public float area = 1.5f;
 
@@ -24,6 +26,9 @@ public class PuppyMovement : MonoBehaviour
 
     private float fleeDir = 1.0f;
     private bool wandering = false;
+
+    // The direction the puppy is looking at
+    private bool isLookingRight;
 
     private Vector2 currentSpeed;
     private Vector2 desiredSpeed;
@@ -44,7 +49,7 @@ public class PuppyMovement : MonoBehaviour
     void Start()
     {
         aiManager = FindObjectOfType<AIManager>();
-        if(aiManager == null)
+        if (aiManager == null)
         {
             Debug.LogError("No AIManager found in scene");
         }
@@ -59,31 +64,59 @@ public class PuppyMovement : MonoBehaviour
         }
         float sqrtSpeed = Mathf.Sqrt(speed);
         currentSpeed = new Vector2(Random.Range(-sqrtSpeed, sqrtSpeed), Random.Range(-sqrtSpeed, sqrtSpeed));
+
+        animator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        /*
         if (Input.GetKey("space") )
         {
             follow = !follow;
         }
-        
+        */
+
+        //Check if the puppy is dying
+        if (animator.GetBool("IsDead")) return;
+
         Steering();
 
-        if(currentSpeed.magnitude > speed)
+        if (currentSpeed.magnitude > speed)
         {
             currentSpeed = currentSpeed.normalized * speed;
         }
+
+        //Check if the movement direction has changed
+        FlipSprite();
 
         // Calculate new position
         Vector2 newPos = new Vector2(transform.position.x, transform.position.y) + currentSpeed * Time.deltaTime;
 
         // Update position
         transform.position = new Vector3(newPos.x, newPos.y, 0.0f);
+    }
 
-        // MAKE PUPPY LOOK AT FOLLOW DIRECTION
+    // Flips the sprite if it changes its direction
+    void FlipSprite()
+    {
+        if (currentSpeed.x > 0)
+        {
+            if (!isLookingRight)
+            {
+                transform.localScale = new Vector3(transform.localScale.x * -1.0f, transform.localScale.y, transform.localScale.z);
+            }
+            isLookingRight = true;
+        }
+        else if (currentSpeed.x < 0)
+        {
+            if (isLookingRight)
+            {
+                transform.localScale = new Vector3(transform.localScale.x * -1.0f, transform.localScale.y, transform.localScale.z);
+            }
+            isLookingRight = false;
+        }
     }
 
     void Steering()
