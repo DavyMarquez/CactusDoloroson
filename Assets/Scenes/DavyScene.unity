@@ -795,13 +795,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2635713671275507397, guid: 7b4e7df3c45560449b57238fc275e6b6,
+  m_Sprite: {fileID: -5780752870735018439, guid: fd754b56a96ac2a40887f99bdea6dac6,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.71, y: 1.5}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -978,8 +978,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5910110768907342538, guid: 20b546085214b894aa9eed6672e44a20,
         type: 3}
+<<<<<<< HEAD
       propertyPath: buffSpeedMultiplayer
       value: 2
+=======
+      propertyPath: huggingTime
+      value: 1
+>>>>>>> d98e460565c74f0c4467df730e17d776b293d7d9
       objectReference: {fileID: 0}
     - target: {fileID: 5910110768907342539, guid: 20b546085214b894aa9eed6672e44a20,
         type: 3}
@@ -994,7 +999,7 @@ PrefabInstance:
     - target: {fileID: 5910110768907342540, guid: 20b546085214b894aa9eed6672e44a20,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.01
+      value: -0.66
       objectReference: {fileID: 0}
     - target: {fileID: 5910110768907342540, guid: 20b546085214b894aa9eed6672e44a20,
         type: 3}
@@ -1040,6 +1045,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5910110768907342540, guid: 20b546085214b894aa9eed6672e44a20,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5910110768907342540, guid: 20b546085214b894aa9eed6672e44a20,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b546085214b894aa9eed6672e44a20, type: 3}
@@ -1109,6 +1124,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512997922177722228, guid: a45806ededa3b954d9679a8fc36b969b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512997922177722228, guid: a45806ededa3b954d9679a8fc36b969b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7512997922177722229, guid: a45806ededa3b954d9679a8fc36b969b,
         type: 3}

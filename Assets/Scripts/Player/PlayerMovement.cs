@@ -19,6 +19,9 @@ public class PlayerMovement : MonoBehaviour
 
     private float currentSpeed = 0.0f;
 
+    [SerializeField]
+    private float huggingTime = 0.21f;
+
     // getter and setter
     public float Speed
     {
@@ -29,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        animator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -46,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         //transform.position = new Vector3(newPos.x, newPos.y, 0.0f);
         Vector2 currentPos = transform.position;
 
+        //Check the direction and if Julia is walking or not and make the proper animation
         if (direction.x != 0)
         {
             animator.SetBool("IsLookingRight", direction.x > 0 ? true : false);
@@ -65,7 +69,13 @@ public class PlayerMovement : MonoBehaviour
             currentSpeed = speed;
         }
 
-        GetComponent<Rigidbody2D>().MovePosition(currentPos + currentSpeed * direction * Time.deltaTime);
+        //Hug
+        if (Input.GetKey("space"))
+        {
+            StartCoroutine(Hug());
+        }
+
+        GetComponent<Rigidbody2D>().MovePosition(currentPos + speed * direction * Time.deltaTime);
     }
 
     public void ApplySpeedBuff()
@@ -76,5 +86,17 @@ public class PlayerMovement : MonoBehaviour
     public void RemoveSpeedBuff()
     {
         speedBuff = false;
+    }
+    
+    //Coroutine for the Hug animation
+    IEnumerator Hug()
+    {
+        animator.SetBool("IsHugging", true);
+        float timeAtStart = Time.time;
+        while(huggingTime > Time.time - timeAtStart)
+        {
+            yield return null;
+        }
+        animator.SetBool("IsHugging", false);
     }
 }
