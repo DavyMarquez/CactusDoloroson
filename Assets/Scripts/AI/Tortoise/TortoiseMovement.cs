@@ -34,7 +34,6 @@ public class TortoiseMovement : MonoBehaviour
 
     private Vector2 desiredSpeed;
 
-    private bool isFleeing = false;
     private float fleeDir = 1.0f;
     private Vector2 rightSide;
     private Vector2 leftSide;
@@ -47,6 +46,7 @@ public class TortoiseMovement : MonoBehaviour
     private float wallAvoidDistance;
     private Vector2 newPos;
 
+    private AIStats aiStats;
     void Start()
     {
         aiManager = FindObjectOfType<AIManager>();
@@ -67,6 +67,7 @@ public class TortoiseMovement : MonoBehaviour
         currentSpeed = new Vector2(Random.Range(-sqrtSpeed, sqrtSpeed), Random.Range(-sqrtSpeed, sqrtSpeed));
 
         animator = gameObject.GetComponent<Animator>();
+        aiStats = gameObject.GetComponent<AIStats>();
 
         Collider2D[] collisionArray = gameObject.GetComponents<CircleCollider2D>();
         foreach (CircleCollider2D c in collisionArray)
@@ -101,7 +102,7 @@ public class TortoiseMovement : MonoBehaviour
         transform.position = new Vector3(newPos.x, newPos.y, 0.0f);
     }
 
-    
+    // Flips the sprite if it changes its direction
     void FlipSprite()
     {
         if (currentSpeed.x > 0)
@@ -109,16 +110,16 @@ public class TortoiseMovement : MonoBehaviour
             if (!isLookingRight)
             {
                 transform.localScale = new Vector3(transform.localScale.x * -1.0f, transform.localScale.y, transform.localScale.z);
+                isLookingRight = true;
             }
-            isLookingRight = true;
         }
         else if (currentSpeed.x < 0)
         {
             if (isLookingRight)
             {
                 transform.localScale = new Vector3(transform.localScale.x * -1.0f, transform.localScale.y, transform.localScale.z);
+                isLookingRight = false;
             }
-            isLookingRight = false;
         }
     }
 
@@ -131,7 +132,7 @@ public class TortoiseMovement : MonoBehaviour
 
         distanceVector.Normalize();
 
-        if (Vector2.Distance(currentPos, playerPos) < detectionArea && isFleeing) // Follow/flee player
+        if (Vector2.Distance(currentPos, playerPos) < detectionArea && aiStats.IsAvoidingPlayer) // Follow/flee player
         {
             desiredSpeed = distanceVector * speed;
 

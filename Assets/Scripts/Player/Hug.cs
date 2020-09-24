@@ -25,6 +25,10 @@ public class Hug : MonoBehaviour
     [Range(0.0f, 100.0f)]
     public float hugFailPenalitation = 5.0f;
 
+    [Min(0)]
+    public float hugCoolDown = 0.0f;
+    private float timeLastHug = 0.0f;
+
     private PlayerStats playerStats;
 
     private PlayerMovement playerMovement;
@@ -50,13 +54,15 @@ public class Hug : MonoBehaviour
         playerMovement = gameObject.GetComponent<PlayerMovement>();
         animator = gameObject.GetComponent<Animator>();
         dashSpeed = dashDistance / dashTime;
+        timeLastHug = hugCoolDown;
     }
 
     // Update is called once per frame
     void Update()
     {
         //Hug
-        if (Input.GetKey("space") && !dashing)
+        timeLastHug += Time.deltaTime;
+        if (Input.GetKey("space") && !dashing && timeLastHug >= hugCoolDown)
         {
             StartCoroutine(OnDash());
         }
@@ -96,6 +102,7 @@ public class Hug : MonoBehaviour
         animator.SetBool("IsHugging", false);
         invulnerable = false;
         somethingHugged = false;
+        timeLastHug = 0.0f;
     }
 
     IEnumerator OnDash()

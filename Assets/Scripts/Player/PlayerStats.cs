@@ -183,9 +183,9 @@ public class PlayerStats : MonoBehaviour
         {
             foreach (GameObject p in aiManager.AIList)
             {
-                if (p.GetComponent<AIStats>() != null)
+                if (p.TryGetComponent<AIStats>(out var aiStats))
                 {
-                    p.GetComponent<AIStats>().IsAvoidingPlayer = value;
+                    aiStats.IsAvoidingPlayer = value;
                 }
             }
         }

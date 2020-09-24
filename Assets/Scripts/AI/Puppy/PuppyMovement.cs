@@ -28,8 +28,6 @@ public class PuppyMovement : MonoBehaviour
     [SerializeField]
     private float wanderTime = 2.0f;
 
-    private bool isFleeing = false;
-
     private float fleeDir = 1.0f;
     private bool wandering = false;
 
@@ -119,16 +117,16 @@ public class PuppyMovement : MonoBehaviour
             if (!isLookingRight)
             {
                 transform.localScale = new Vector3(transform.localScale.x * -1.0f, transform.localScale.y, transform.localScale.z);
+                isLookingRight = true;
             }
-            isLookingRight = true;
         }
         else if (currentSpeed.x < 0)
         {
             if (isLookingRight)
             {
                 transform.localScale = new Vector3(transform.localScale.x * -1.0f, transform.localScale.y, transform.localScale.z);
+                isLookingRight = false;
             }
-            isLookingRight = false;
         }
     }
 

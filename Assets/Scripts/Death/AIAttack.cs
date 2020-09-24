@@ -98,8 +98,6 @@ public class AIAttack : MonoBehaviour
                         StartCoroutine(Die());
                     }
                 }
-
-
             }
             else
             {

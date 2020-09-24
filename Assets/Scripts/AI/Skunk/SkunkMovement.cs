@@ -102,6 +102,7 @@ public class SkunkMovement : MonoBehaviour
         transform.position = new Vector3(newPos.x, newPos.y, 0.0f);
     }
 
+    // Flips the sprite if it changes its direction
     void FlipSprite()
     {
         if (currentSpeed.x > 0)
@@ -109,16 +110,16 @@ public class SkunkMovement : MonoBehaviour
             if (!isLookingRight)
             {
                 transform.localScale = new Vector3(transform.localScale.x * -1.0f, transform.localScale.y, transform.localScale.z);
+                isLookingRight = true;
             }
-            isLookingRight = true;
         }
         else if (currentSpeed.x < 0)
         {
             if (isLookingRight)
             {
                 transform.localScale = new Vector3(transform.localScale.x * -1.0f, transform.localScale.y, transform.localScale.z);
+                isLookingRight = false;
             }
-            isLookingRight = false;
         }
     }
 

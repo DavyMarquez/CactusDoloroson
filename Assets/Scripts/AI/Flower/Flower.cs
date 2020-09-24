@@ -5,7 +5,7 @@ using UnityEngine;
 public class Flower : MonoBehaviour
 {
 
-    private Collider2D collider;
+    private Collider2D col;
 
     private bool picked = false;
 
@@ -13,6 +13,12 @@ public class Flower : MonoBehaviour
     public float respawnTime = 5.0f;
 
     private float timeSincePicked = 0.0f;
+
+    [SerializeField]
+    private float timeToFlip = 3.0f;
+
+    private bool isFlipping = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +38,11 @@ public class Flower : MonoBehaviour
             GetComponent<Renderer>().enabled = true;
             picked = false;
         }
+        if (!isFlipping)
+        {
+            //StartCoroutine(FlipIdle(Random.Range(timeToFlip-1, timeToFlip+1)));
+            StartCoroutine(FlipIdle(timeToFlip));
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -45,6 +56,18 @@ public class Flower : MonoBehaviour
             GetComponent<Collider2D>().enabled = false;
             GetComponent<Renderer>().enabled = false;
         }
+    }
+
+    IEnumerator FlipIdle(float WaitTime)
+    {
+        isFlipping = true;
+        float timeAtStart = Time.time;
+        while(WaitTime > Time.time - timeAtStart)
+        {
+            yield return null;
+        }
+        transform.localScale = new Vector3(transform.localScale.x * -1.0f, transform.localScale.y, transform.localScale.z);
+        isFlipping = false;
     }
 }
 
