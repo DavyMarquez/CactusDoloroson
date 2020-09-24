@@ -8,6 +8,16 @@ public class PlayerStats : MonoBehaviour
     private bool speedBuffNotified = false;
     private bool dashBuffNotified = false;
 
+    private bool smell = false;
+
+    private AIManager aiManager;
+    public bool Smell
+    {
+        get { return smell; }
+        set { smell = value; }
+    }
+
+
     [Range(0.0f, 100.0f)]
     public float speedBuffPercentage = 50.0f;
 
@@ -52,7 +62,13 @@ public class PlayerStats : MonoBehaviour
         sorrow = 0.0f;
         speedBuffNotified = false;
         dashBuffNotified = false;
+        smell = false;
         animator = gameObject.GetComponent<Animator>();
+        aiManager = FindObjectOfType<AIManager>();
+        if (aiManager == null)
+        {
+            Debug.LogError("No AIManager found in scene");
+        }
     }
 
     // Update is called once per frame
@@ -132,5 +148,39 @@ public class PlayerStats : MonoBehaviour
             yield return null;
         }
         Debug.Log("Muerto");
+    }
+
+    public void RemoveSmellInTime(float smellTimer)
+    {
+        StartCoroutine(RemoveSmell(smellTimer));
+
+    }
+
+    public IEnumerator RemoveSmell(float smellTimer)
+    {
+        float timeAtStart = Time.time;
+        while (smellTimer > Time.time - timeAtStart)
+        {
+            yield return null;
+        }
+        Debug.LogWarning("removing smell ");
+        setAvoidingPlayer(false);
+    }
+
+    public void setAvoidingPlayer(bool value)
+    {
+        smell = value;
+        Debug.LogWarning("setting the variable " + value);
+        
+        if (aiManager != null)
+        {
+            foreach (GameObject p in aiManager.AIList)
+            {
+                if (p.GetComponent<AIStats>() != null)
+                {
+                    p.GetComponent<AIStats>().IsAvoidingPlayer = value;
+                }
+            }
+        }
     }
 }

@@ -13,9 +13,11 @@ GameObject:
   - component: {fileID: 7846350542639595017}
   - component: {fileID: 7846350542639595018}
   - component: {fileID: 7846350542639595019}
+  - component: {fileID: 4479834324035594102}
+  - component: {fileID: 1956746386927256200}
   m_Layer: 0
   m_Name: Skunk
-  m_TagString: Untagged
+  m_TagString: AI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,7 +130,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb0ab2b547effa40b59cd4264bbbae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   animator: {fileID: 0}
   checkWallDistance: 2
   speed: 4
+--- !u!114 &4479834324035594102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7846350542639595020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db18e9574ff31a74b91c210907010745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathTimer: 1
+  smellTimer: 3
+  animator: {fileID: 0}
+--- !u!114 &1956746386927256200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7846350542639595020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87846c44694b4594e8d6d0e0930cf3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  love: 2
+  sorrow: 2

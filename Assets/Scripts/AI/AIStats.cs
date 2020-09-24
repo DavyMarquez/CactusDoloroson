@@ -21,4 +21,10 @@ public class AIStats : MonoBehaviour
         set { sorrow = value; }
     }
 
+    private bool isAvoidingPlayer = false;
+    public bool IsAvoidingPlayer
+    {
+        get { return isAvoidingPlayer; }
+        set { isAvoidingPlayer = value; }
+    }
 }

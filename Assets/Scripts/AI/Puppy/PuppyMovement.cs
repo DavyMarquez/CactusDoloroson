@@ -25,8 +25,6 @@ public class PuppyMovement : MonoBehaviour
     [Min(0.0f)]
     public float detectionArea = 10.0f;
 
-    private bool follow = true;
-
     private float fleeDir = 1.0f;
     private bool wandering = false;
 
@@ -47,7 +45,7 @@ public class PuppyMovement : MonoBehaviour
     private Vector2 rightSide;
     private Vector2 leftSide;
     private Vector2 wallAvoidance;
-
+    private AIStats aiStats;
     // Start is called before the first frame update
     void Start()
     {
@@ -69,6 +67,7 @@ public class PuppyMovement : MonoBehaviour
         currentSpeed = new Vector2(Random.Range(-sqrtSpeed, sqrtSpeed), Random.Range(-sqrtSpeed, sqrtSpeed));
 
         animator = gameObject.GetComponent<Animator>();
+        aiStats = gameObject.GetComponent<AIStats>();
     }
 
     // Update is called once per frame
@@ -140,9 +139,9 @@ public class PuppyMovement : MonoBehaviour
         }
         else {
             desiredSpeed = distanceVector * speed;
-            if (!follow)
+            //dont follow the player
+            if (aiStats.IsAvoidingPlayer)
             {
-                
                 color = Color.yellow;
                 Vector3 aux = Quaternion.Euler(0, 0, 90) * desiredSpeed.normalized;
 
