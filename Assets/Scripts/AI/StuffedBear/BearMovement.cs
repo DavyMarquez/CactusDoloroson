@@ -46,8 +46,5 @@ public class BearMovement : MonoBehaviour
 
         transform.position = new Vector3(newPos.x, newPos.y, 0.0f);
 
-        var dir = (new Vector3(start.x, start.y, 0.0f) + new Vector3(direction.x, direction.y, 0.0f) * 1.5f) - transform.position;
-        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 }
