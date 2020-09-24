@@ -53,16 +53,15 @@ public class Spawner : MonoBehaviour
                 }
 
                 float rand = Random.Range(0.0f, 1.0f);
-
                 if (rand < bearChance)
                 {
                     Instantiate(enemyTypes[3], transform.position, Quaternion.identity);
                 }
-                else if (rand > skunkChance)
+                else if (rand < skunkChance)
                 {
                     Instantiate(enemyTypes[2], transform.position, Quaternion.identity);
                 }
-                else if (rand > tortoiseChance)
+                else if (rand < tortoiseChance)
                 {
                     Instantiate(enemyTypes[1], transform.position, Quaternion.identity);
                 }
