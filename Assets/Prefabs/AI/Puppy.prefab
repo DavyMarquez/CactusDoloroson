@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7512997921159330333}
   - component: {fileID: 7512997921159330332}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 1474522191}
   - component: {fileID: 1474522187}
   - component: {fileID: 1474522194}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Puppy
   m_TagString: AI
   m_Icon: {fileID: 0}
@@ -133,10 +133,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  animator: {fileID: 0}
   area: 1.4
   speed: 6
   detectionArea: 50
+  wanderTime: 2
 --- !u!58 &5573422759254690462
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -287,4 +287,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathTimer: 2
+  smellTimer: 2
   animator: {fileID: 1474522191}
