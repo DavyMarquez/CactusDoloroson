@@ -18,7 +18,7 @@ public class BearMovement : MonoBehaviour
     {
         animator = gameObject.GetComponent<Animator>();
         direction = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
-        //direction = new Vector2(1.0f, 1.0f);
+        
         direction.Normalize();
         GetComponent<Renderer>().material.color = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f),
             Random.Range(0.0f, 1.0f));

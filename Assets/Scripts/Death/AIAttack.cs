@@ -104,6 +104,10 @@ public class AIAttack : MonoBehaviour
             else
             {
                 playerStats.IncreaseSorrow(aiStats.Sorrow);
+                if(gameObject.GetComponent<BearMovement>() != null)
+                {
+                    playerStats.IncreaseLove(aiStats.Love);
+                } 
                 StartCoroutine(Die());
             }
 

@@ -91,23 +91,27 @@ public class PlayerStats : MonoBehaviour
 
     public void IncreaseLove(float amount)
     {
-        love = Mathf.Min(amount + love, 100.0f);
+        //love = Mathf.Min(amount + love, 100.0f);
+        love = Mathf.Clamp(amount + love, 0.0f, 100.0f);
     }
 
     public void DecreaseLove(float amount)
     {
-        love = Mathf.Max(love - amount, 0.0f);
+        //love = Mathf.Max(love - amount, 0.0f);
+        love = Mathf.Clamp(love - amount, 0.0f, 100.0f);
     }
 
     public void IncreaseSorrow(float amount)
     {
-        sorrow = Mathf.Min(amount + sorrow, 100.0f);
+        //sorrow = Mathf.Min(amount + sorrow, 100.0f);
+        sorrow = Mathf.Clamp(sorrow + amount, 0.0f, 100.0f);
         timeSinceLastInteraction = 0.0f;
     }
 
     public void DecreaseSorrow(float amount)
     {
-        sorrow = Mathf.Max(sorrow - amount, 0.0f);
+        //sorrow = Mathf.Max(sorrow - amount, 0.0f);
+        sorrow = Mathf.Clamp(sorrow - amount, 0.0f, 100.0f);
         timeSinceLastInteraction = 0.0f;
     }
 
