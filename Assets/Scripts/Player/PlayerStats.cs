@@ -44,6 +44,9 @@ public class PlayerStats : MonoBehaviour
         set { sorrow = value; }
     }
 
+    [SerializeField]
+    private bool gameOver = true;
+
     // sorrow decreased by seconds
     [Range(0.0f, 100.0f)]
     public float sorrowIncreaseRate = 1.0f;
@@ -81,7 +84,7 @@ public class PlayerStats : MonoBehaviour
         {
             sorrow = Mathf.Min(sorrow + sorrowIncreaseRate * Time.deltaTime, 100.0f);
         }
-        if (sorrow == 100.0f && !animator.GetBool("IsDying"))
+        if (sorrow >= 100.0f && !animator.GetBool("IsDying") && gameOver)
         {
             StartCoroutine(GameOver());
         }

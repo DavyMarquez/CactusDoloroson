@@ -25,20 +25,41 @@ public class Spawner : MonoBehaviour
     [Min(0.0f)]
     public float timeBetweenSpawns = 5.0f;
 
-    private float timeSinceLastSpawn = 0.0f;
+    public float timeSinceLastSpawn = 0.0f;
 
+    private Camera cam;
     // Start is called before the first frame update
     void Start()
     {
+        cam = FindObjectOfType<Camera>();
         timeSinceLastSpawn = 0.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(timeSinceLastSpawn >= timeBetweenSpawns)
+        /*if (GetComponent<Renderer>().isVisible)
         {
-            StartCoroutine(IncrementTimer());
+            Debug.Log("visible");
+        }*/
+        timeSinceLastSpawn += Time.deltaTime;
+        if (timeSinceLastSpawn >= timeBetweenSpawns)
+        {
+            if (!cam)
+            {
+                return;
+            }
+            Vector3 viewportPos = cam.WorldToViewportPoint(transform.position);
+            
+            if (viewportPos.x >= 0 && viewportPos.x <= 1 &&
+                viewportPos.y >= 0 && viewportPos.y <= 1)
+            {
+                Debug.Log("se ve, no se spawnea");
+                timeSinceLastSpawn = 0.0f;
+                return;
+            }
+
+            timeSinceLastSpawn = 0.0f;
             for(int i = 0; i < spawnAmount; ++i)
             {
                 float rand = Random.Range(0.0f, 1.0f);
@@ -58,19 +79,8 @@ public class Spawner : MonoBehaviour
                 {
                     Instantiate(enemyTypes[3], transform.position, Quaternion.identity);
                 }
+
             }
         }
-    }
-
-    IEnumerator IncrementTimer()
-    {
-        float timeAtEnter = Time.time;
-        while (timeBetweenSpawns > Time.time - timeAtEnter)
-        {
-            timeSinceLastSpawn += Time.deltaTime;
-            yield return null;
-
-        }
-        timeSinceLastSpawn = 0.0f;
     }
 }

@@ -30,10 +30,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private bool isLookingRight = false;
-    
-
-    [SerializeField]
-    private float huggingTime = 0.21f;
 
     // getter and setter
     public float Speed

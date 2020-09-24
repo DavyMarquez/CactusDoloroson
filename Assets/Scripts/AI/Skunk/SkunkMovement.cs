@@ -22,7 +22,7 @@ public class SkunkMovement : MonoBehaviour
     private Vector2 currentSpeed;
     private bool wandering = false;
     private Vector2 newPos;
-    
+
     void Start()
     {
         aiManager = FindObjectOfType<AIManager>();

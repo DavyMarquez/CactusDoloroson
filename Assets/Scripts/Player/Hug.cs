@@ -18,7 +18,8 @@ public class Hug : MonoBehaviour
 
     [Min(0.0f)]
     public float dashBuffedTime = 0.5f;
-
+    
+    [SerializeField]
     private float dashSpeed;
 
     [Range(0.0f, 100.0f)]
@@ -27,8 +28,6 @@ public class Hug : MonoBehaviour
     private PlayerStats playerStats;
 
     private PlayerMovement playerMovement;
-
-    private bool hugging = false;
 
     private Animator animator;
 
