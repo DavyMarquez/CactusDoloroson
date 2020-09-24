@@ -150,8 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87846c44694b4594e8d6d0e0930cf3f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  love: 30
-  sorrow: -20
+  love: 10
+  sorrow: 10
 --- !u!114 &6202632892900014190
 MonoBehaviour:
   m_ObjectHideFlags: 0
