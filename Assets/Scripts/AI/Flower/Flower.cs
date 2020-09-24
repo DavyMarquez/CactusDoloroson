@@ -51,7 +51,7 @@ public class Flower : MonoBehaviour
             picked = true;
             timeSincePicked = 0.0f;
             collision.transform.gameObject.GetComponent<PlayerStats>().IncreaseLove(GetComponent<AIStats>().Love);
-            collision.transform.gameObject.GetComponent<PlayerStats>().DecreaseSorrow(GetComponent<AIStats>().Sorrow);
+            collision.transform.gameObject.GetComponent<PlayerStats>().IncreaseSorrow(GetComponent<AIStats>().Sorrow);
             GetComponent<Collider2D>().enabled = false;
             GetComponent<Renderer>().enabled = false;
         }

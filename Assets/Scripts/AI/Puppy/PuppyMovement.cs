@@ -106,7 +106,9 @@ public class PuppyMovement : MonoBehaviour
         Vector2 newPos = new Vector2(transform.position.x, transform.position.y) + currentSpeed * Time.deltaTime;
 
         // Update position
-        transform.position = new Vector3(newPos.x, newPos.y, 0.0f);
+        //transform.position = new Vector3(newPos.x, newPos.y, 0.0f);
+
+        GetComponent<Rigidbody2D>().MovePosition(currentPos + currentSpeed * Time.deltaTime);
     }
 
     // Flips the sprite if it changes its direction
@@ -167,22 +169,20 @@ public class PuppyMovement : MonoBehaviour
         separationVector = new Vector2(0.0f, 0.0f);
 
         // iterate all elements in array
-        /*foreach (GameObject p in aiManager.AIList)
+        foreach (GameObject p in aiManager.AIList)
         {
             distance = currentPos - new Vector2(p.transform.position.x, p.transform.position.y);
             if(distance.magnitude <= area)
             {
                 separationVector += distance;
             }
-        }*/
+        }
 
-        int i = 0;
         Collider2D[] overlap = Physics2D.OverlapCircleAll(transform.position, area, LayerMask.NameToLayer("AI"));
         foreach(Collider2D c in overlap)
         {
-            i += 1;
-            
-             separationVector += distance;
+            distance = currentPos - new Vector2(c.transform.position.x, c.transform.position.y);
+            separationVector += distance;
         }
 
         Vector3 auxPerp = Quaternion.Euler(0, 0, 90) * currentSpeed.normalized;
