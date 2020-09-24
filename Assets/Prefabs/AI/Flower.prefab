@@ -112,8 +112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87846c44694b4594e8d6d0e0930cf3f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  love: 59.6
-  sorrow: 34.5
+  love: 1
+  sorrow: -15
 --- !u!58 &7515039108342794949
 CircleCollider2D:
   m_ObjectHideFlags: 0

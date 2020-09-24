@@ -152,7 +152,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.7
+  m_Radius: 0.3
 --- !u!50 &1474522186
 Rigidbody2D:
   serializedVersion: 4
@@ -189,7 +189,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.25
 --- !u!212 &1474522190
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -272,8 +272,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87846c44694b4594e8d6d0e0930cf3f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  love: 3
-  sorrow: 10
+  love: 15
+  sorrow: 30
 --- !u!114 &1474522194
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4346cee039c0e4bbec9e8bc84d5def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 12
   bounceDistance: 0.5
   animator: {fileID: 0}
 --- !u!58 &3753050540618757040
@@ -143,5 +143,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87846c44694b4594e8d6d0e0930cf3f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  love: 51.7
-  sorrow: -56.8
+  love: 7
+  sorrow: -40
