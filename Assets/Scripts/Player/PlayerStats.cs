@@ -108,13 +108,16 @@ public class PlayerStats : MonoBehaviour
     {
         //sorrow = Mathf.Min(amount + sorrow, 100.0f);
         sorrow = Mathf.Clamp(sorrow + amount, 0.0f, 100.0f);
-        timeSinceLastInteraction = 0.0f;
     }
 
     public void DecreaseSorrow(float amount)
     {
         //sorrow = Mathf.Max(sorrow - amount, 0.0f);
         sorrow = Mathf.Clamp(sorrow - amount, 0.0f, 100.0f);
+    }
+
+    public void TimeSinceLastInteractionReset()
+    {
         timeSinceLastInteraction = 0.0f;
     }
 

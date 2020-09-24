@@ -41,38 +41,6 @@ public class AIAttack : MonoBehaviour
 
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-
-        if (collision.collider && collision.gameObject.tag == "Player")
-        {
-            PlayerStats playerStats = collision.gameObject.GetComponent<PlayerStats>();
-            if (collision.gameObject.GetComponent<Hug>().invulnerable)
-            {
-                if (!collision.gameObject.GetComponent<Hug>().somethingHugged)
-                {
-                    collision.gameObject.GetComponent<Hug>().somethingHugged = true;
-                    if (playerStats != null)
-                    {
-                        playerStats.IncreaseLove(aiStats.Love);
-                        playerStats.IncreaseSorrow(aiStats.Sorrow);
-
-                        StartCoroutine(Die());
-                    }
-                }
-
-
-            }
-            else
-            {
-                playerStats.IncreaseSorrow(aiStats.Sorrow);
-
-                StartCoroutine(Die());
-            }
-
-        }
-    }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -88,6 +56,7 @@ public class AIAttack : MonoBehaviour
                     {
                         playerStats.IncreaseLove(aiStats.Love);
                         playerStats.IncreaseSorrow(aiStats.Sorrow);
+                        playerStats.TimeSinceLastInteractionReset();
                         SkunkMovement skunk = gameObject.GetComponent<SkunkMovement>();
                         if (skunk != null)
                         {
@@ -102,7 +71,8 @@ public class AIAttack : MonoBehaviour
             else
             {
                 playerStats.IncreaseSorrow(aiStats.Sorrow);
-                if(gameObject.GetComponent<BearMovement>() != null)
+                playerStats.TimeSinceLastInteractionReset();
+                if (gameObject.GetComponent<BearMovement>() != null)
                 {
                     playerStats.IncreaseLove(aiStats.Love);
                 } 

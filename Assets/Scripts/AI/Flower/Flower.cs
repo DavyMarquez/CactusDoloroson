@@ -40,8 +40,7 @@ public class Flower : MonoBehaviour
         }
         if (!isFlipping)
         {
-            //StartCoroutine(FlipIdle(Random.Range(timeToFlip-1, timeToFlip+1)));
-            StartCoroutine(FlipIdle(timeToFlip));
+            StartCoroutine(FlipIdle(Random.Range(timeToFlip-1, timeToFlip+1)));
         }
     }
 
