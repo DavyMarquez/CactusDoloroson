@@ -75,6 +75,7 @@ public class Hug : MonoBehaviour
         float timeAtStart = Time.time;
         if (!somethingHugged){
             invulnerable = false;
+            playerStats.IncreaseSorrow(hugFailPenalitation);
         }
         animator.SetBool("IsHugging", true);
 
