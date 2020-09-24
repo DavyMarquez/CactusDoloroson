@@ -51,6 +51,7 @@ public class PuppyMovement : MonoBehaviour
     private Vector2 leftSide;
     private Vector2 wallAvoidance;
     private Vector2 distance;
+    private float wallAvoidDistance;
 
     private AIStats aiStats;
     // Start is called before the first frame update
@@ -75,6 +76,15 @@ public class PuppyMovement : MonoBehaviour
 
         animator = gameObject.GetComponent<Animator>();
         aiStats = gameObject.GetComponent<AIStats>();
+
+        Collider2D[] collisionArray = gameObject.GetComponents<CircleCollider2D>();
+        foreach (CircleCollider2D c in collisionArray)
+        {
+            if (!c.isTrigger)
+            {
+                wallAvoidDistance = c.radius * 1.5f;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -178,10 +188,10 @@ public class PuppyMovement : MonoBehaviour
         leftSide = currentPos - perpendicular * 0.7f;
         Debug.DrawLine(rightSide, rightSide + currentSpeed.normalized * 6.0f, color);
         Debug.DrawLine(leftSide, leftSide + currentSpeed.normalized * 6.0f, color);
-
+        
         wallAvoidance = new Vector2(0.0f, 0.0f);
-        RaycastHit2D rightHit = Physics2D.Raycast(rightSide, currentSpeed.normalized, 3.0f);
-        RaycastHit2D leftHit = Physics2D.Raycast(leftSide, currentSpeed.normalized, 3.0f);
+        RaycastHit2D rightHit = Physics2D.Raycast(rightSide, currentSpeed.normalized, wallAvoidDistance);
+        RaycastHit2D leftHit = Physics2D.Raycast(leftSide, currentSpeed.normalized, wallAvoidDistance);
         if (rightHit.collider != null && rightHit.transform.gameObject.tag != "AI" 
             && rightHit.transform.gameObject.tag != "Player")
         {

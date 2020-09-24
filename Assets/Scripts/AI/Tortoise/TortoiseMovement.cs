@@ -44,8 +44,9 @@ public class TortoiseMovement : MonoBehaviour
     private Vector2 distance;
     private Vector2 distanceVector;
     private Vector2 steering;
+    private float wallAvoidDistance;
+    private Vector2 newPos;
 
-    // Start is called before the first frame update
     void Start()
     {
         aiManager = FindObjectOfType<AIManager>();
@@ -66,9 +67,18 @@ public class TortoiseMovement : MonoBehaviour
         currentSpeed = new Vector2(Random.Range(-sqrtSpeed, sqrtSpeed), Random.Range(-sqrtSpeed, sqrtSpeed));
 
         animator = gameObject.GetComponent<Animator>();
+
+        Collider2D[] collisionArray = gameObject.GetComponents<CircleCollider2D>();
+        foreach (CircleCollider2D c in collisionArray)
+        {
+            if (!c.isTrigger)
+            {
+                wallAvoidDistance = c.radius * 1.5f;
+            }
+        }
+        
     }
 
-    // Update is called once per frame
     void Update()
     {
         //Check if the puppy is dying
@@ -85,7 +95,7 @@ public class TortoiseMovement : MonoBehaviour
         FlipSprite();
 
         // Calculate new position
-        Vector2 newPos = new Vector2(transform.position.x, transform.position.y) + currentSpeed * Time.deltaTime;
+        newPos = new Vector2(transform.position.x, transform.position.y) + currentSpeed * Time.deltaTime;
 
         // Update position
         transform.position = new Vector3(newPos.x, newPos.y, 0.0f);
@@ -158,8 +168,8 @@ public class TortoiseMovement : MonoBehaviour
         Debug.DrawLine(leftSide, leftSide + currentSpeed.normalized * 3.0f, Color.yellow);
 
         Vector2 wallAvoidance = new Vector2(0.0f, 0.0f);
-        RaycastHit2D rightHit = Physics2D.Raycast(rightSide, currentSpeed.normalized, 3.0f);
-        RaycastHit2D leftHit = Physics2D.Raycast(leftSide, currentSpeed.normalized, 3.0f);
+        RaycastHit2D rightHit = Physics2D.Raycast(rightSide, currentSpeed.normalized, wallAvoidDistance);
+        RaycastHit2D leftHit = Physics2D.Raycast(leftSide, currentSpeed.normalized, wallAvoidDistance);
         if (rightHit.collider != null && rightHit.transform.gameObject.tag != "AI"
             && rightHit.transform.gameObject.tag != "Player")
         {
