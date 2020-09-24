@@ -77,10 +77,8 @@ public class Hug : MonoBehaviour
         
         while (huggingTime > Time.time - timeAtStart)
         {
-            if (directionHasChanged)
+            if (isLookingRight != animator.GetBool("IsLookingRight"))
             {
-                animator.SetBool("IsLookingRight", !isLookingRight);
-                directionHasChanged = false;
                 if (isLookingRight)
                 {
                     //Hug animation looking left
@@ -92,7 +90,7 @@ public class Hug : MonoBehaviour
                     animator.CrossFadeInFixedTime("HugRight", 0, -1, Time.time - timeAtStart);
 
                 }
-                isLookingRight = !isLookingRight;
+                isLookingRight = animator.GetBool("IsLookingRight");
             }
             yield return null;
         }

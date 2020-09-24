@@ -73,28 +73,17 @@ public class PlayerMovement : MonoBehaviour
 
 
         //Check the direction and if Julia is walking or not and make the proper animation
-        if (!animator.GetBool("IsHugging"))
+        
+        if (direction.x != 0)
         {
-            if (direction.x != 0)
-            {
-                animator.SetBool("IsLookingRight", direction.x > 0 ? true : false);
-                animator.SetBool("IsWalking", true);
-            }
-            else
-            {
-                animator.SetBool("IsWalking", direction.y != 0 ? true : false);
-            }
-
-            isLookingRight = animator.GetBool("IsLookingRight");
+            animator.SetBool("IsLookingRight", direction.x > 0 ? true : false);
+            animator.SetBool("IsWalking", true);
         }
         else
         {
-            if (isLookingRight && direction.x < 0 || !isLookingRight && direction.x > 0)
-            {
-                isLookingRight = !isLookingRight;
-                gameObject.GetComponent<Hug>().directionHasChanged = true;
-            }
+            animator.SetBool("IsWalking", direction.y != 0 ? true : false);
         }
+        
 
         if (speedBuff)
         {
