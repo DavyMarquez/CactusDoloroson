@@ -117,6 +117,10 @@ public class AIAttack : MonoBehaviour
         {
             animator.SetBool("IsDead", true);
         }
+        else
+        {
+            Destroy(gameObject);
+        }
 
         Destroy(gameObject.GetComponent<Rigidbody2D>());
         Collider2D[] collisionArray = gameObject.GetComponents<Collider2D>();
