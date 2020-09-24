@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnTime: 5
+  timeToFlip: 3
 --- !u!114 &5087149697335310631
 MonoBehaviour:
   m_ObjectHideFlags: 0

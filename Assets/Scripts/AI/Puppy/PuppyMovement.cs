@@ -166,13 +166,23 @@ public class PuppyMovement : MonoBehaviour
 
         separationVector = new Vector2(0.0f, 0.0f);
 
-        foreach (GameObject p in aiManager.AIList)
+        // iterate all elements in array
+        /*foreach (GameObject p in aiManager.AIList)
         {
             distance = currentPos - new Vector2(p.transform.position.x, p.transform.position.y);
             if(distance.magnitude <= area)
             {
                 separationVector += distance;
             }
+        }*/
+
+        int i = 0;
+        Collider2D[] overlap = Physics2D.OverlapCircleAll(transform.position, area, LayerMask.NameToLayer("AI"));
+        foreach(Collider2D c in overlap)
+        {
+            i += 1;
+            
+             separationVector += distance;
         }
 
         Vector3 auxPerp = Quaternion.Euler(0, 0, 90) * currentSpeed.normalized;
