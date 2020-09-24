@@ -268,6 +268,7 @@ public class PuppyMovement : MonoBehaviour
 
     private void OnDestroy()
     {
+        GridAI.GetInstance().RemoveFromGrid(this.gameObject);
         aiManager.RemoveAI(gameObject);
     }
 }

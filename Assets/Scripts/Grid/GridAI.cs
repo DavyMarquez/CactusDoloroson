@@ -71,6 +71,15 @@ public class GridAI
         }
     }
 
+    public void RemoveFromGrid(GameObject go)
+    {
+        Vector2 pi = check[go];
+
+        grid[(int)pi.x, (int)pi.y].Remove(go);
+        check.Remove(go);
+
+    }
+
     public int GetNumAIs()
     {
         int num = 0;
