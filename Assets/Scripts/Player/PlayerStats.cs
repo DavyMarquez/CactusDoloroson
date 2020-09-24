@@ -10,6 +10,10 @@ public class PlayerStats : MonoBehaviour
 
     private bool smell = false;
 
+    public GenericBar loveBar;
+
+    public GenericBar sorrowBar;
+
     private AIManager aiManager;
     public bool Smell
     {
@@ -72,6 +76,9 @@ public class PlayerStats : MonoBehaviour
         {
             Debug.LogError("No AIManager found in scene");
         }
+
+        loveBar.SetMax(100, love);
+        sorrowBar.SetMax(100, sorrow);
     }
 
     // Update is called once per frame
@@ -83,6 +90,7 @@ public class PlayerStats : MonoBehaviour
         if(timeSinceLastInteraction > timeToIncreaseSorrow)
         {
             sorrow = Mathf.Min(sorrow + sorrowIncreaseRate * Time.deltaTime, 100.0f);
+            sorrowBar.SetValue(sorrow);
         }
         if (sorrow >= 100.0f && !animator.GetBool("IsDying") && gameOver)
         {
@@ -96,24 +104,28 @@ public class PlayerStats : MonoBehaviour
     {
         //love = Mathf.Min(amount + love, 100.0f);
         love = Mathf.Clamp(amount + love, 0.0f, 100.0f);
+        loveBar.SetValue(love);
     }
 
     public void DecreaseLove(float amount)
     {
         //love = Mathf.Max(love - amount, 0.0f);
         love = Mathf.Clamp(love - amount, 0.0f, 100.0f);
+        loveBar.SetValue(love);
     }
 
     public void IncreaseSorrow(float amount)
     {
         //sorrow = Mathf.Min(amount + sorrow, 100.0f);
         sorrow = Mathf.Clamp(sorrow + amount, 0.0f, 100.0f);
+        sorrowBar.SetValue(sorrow);
     }
 
     public void DecreaseSorrow(float amount)
     {
         //sorrow = Mathf.Max(sorrow - amount, 0.0f);
         sorrow = Mathf.Clamp(sorrow - amount, 0.0f, 100.0f);
+        sorrowBar.SetValue(sorrow);
     }
 
     public void TimeSinceLastInteractionReset()
