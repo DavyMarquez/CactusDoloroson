@@ -30,6 +30,8 @@ public class Hug : MonoBehaviour
 
     public bool reverseTransparencyAnimation = false;
 
+    public ParticleSystem dust;
+
     [Min(0)]
     public float hugCoolDown = 0.0f;
     private float timeLastHug = 0.0f;
@@ -118,6 +120,7 @@ public class Hug : MonoBehaviour
 
     IEnumerator OnDash()
     {
+        PlayDust();
         invulnerable = true;
         dashing = true;
         somethingHugged = false;
@@ -179,4 +182,8 @@ public class Hug : MonoBehaviour
         dashBuff = true;
     }
 
+    void PlayDust()
+    {
+        dust.Play();
+    }
 }
