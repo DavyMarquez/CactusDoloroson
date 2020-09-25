@@ -43,6 +43,34 @@ public class GridAI
 
         return result;
     }
+    
+    public GOList GetClosePositions(Vector2 pos, float distance)
+    {
+        int cells = (int) distance / cellSize;
+
+
+        int x = ((int)pos.x - minX) / cellSize;
+        int y = ((int)pos.y - minY) / cellSize;
+
+        GOList result = new GOList();
+        int count = 0;
+        for (int i = -cells / 2; i < cells / 2; ++i)
+        {
+            for (int j = -cells / 2; j < cells / 2; ++j)
+            {
+                count += 1;
+                int ix = i + x;
+                int jy = j + y;
+                if (ix >= 0 && ix < numX &&
+                    jy >= 0 && jy < numY)
+                {
+                    result.AddRange(grid[ix, jy]);
+                }
+            }
+        }
+        Debug.Log(count);
+        return result;
+    }
 
     public void InitializePosition(GameObject go, Vector2 pos)
     {
@@ -69,6 +97,16 @@ public class GridAI
             grid[newX, newY].Add(go);
             check[go] = new Vector2(newX, newY);
         }
+    }
+
+
+    public void RemoveFromGrid(GameObject go)
+    {
+        Vector2 pi = check[go];
+
+        grid[(int)pi.x, (int)pi.y].Remove(go);
+        check.Remove(go);
+
     }
 
     public int GetNumAIs()

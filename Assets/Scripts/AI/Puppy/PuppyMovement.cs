@@ -84,7 +84,7 @@ public class PuppyMovement : MonoBehaviour
             }
         }
 
-        Debug.Log("Initial: " + GridAI.GetInstance().GetNumAIs());
+        // Debug.Log("Initial: " + GridAI.GetInstance().GetNumAIs());
 
     }
 
@@ -120,11 +120,10 @@ public class PuppyMovement : MonoBehaviour
 
 
         // Update position
-        //transform.position = new Vector3(newPos.x, newPos.y, 0.0f);
-
-        GetComponent<Rigidbody2D>().MovePosition(currentPos + currentSpeed * Time.deltaTime);
-
         transform.position = new Vector3(newPos.x, newPos.y, 0.0f);
+
+        //GetComponent<Rigidbody2D>().MovePosition(currentPos + currentSpeed * Time.deltaTime);
+
 
         GridAI.GetInstance().UpdatePosition(this.gameObject, oldPosition, newPos);
     }
@@ -204,18 +203,17 @@ public class PuppyMovement : MonoBehaviour
             i += 1;
             distance = currentPos - new Vector2(c.transform.position.x, c.transform.position.y);
             separationVector += distance;
+
         }
         */
 
-        int i = 0;
         // Get the closest positions to steer
-        foreach (GameObject go in GridAI.GetInstance().GetClosePositions(currentPos))
+        //foreach (GameObject go in GridAI.GetInstance().GetClosePositions(currentPos))
+        foreach (GameObject go in GridAI.GetInstance().GetClosePositions(currentPos, area))
         {
             distance = currentPos - new Vector2(go.transform.position.x, go.transform.position.y);
             separationVector += distance;
-            ++i;
         }
-
 
         Vector3 auxPerp = Quaternion.Euler(0, 0, 90) * currentSpeed.normalized;
 
@@ -272,6 +270,7 @@ public class PuppyMovement : MonoBehaviour
 
     private void OnDestroy()
     {
+        GridAI.GetInstance().RemoveFromGrid(this.gameObject);
         aiManager.RemoveAI(gameObject);
     }
 }

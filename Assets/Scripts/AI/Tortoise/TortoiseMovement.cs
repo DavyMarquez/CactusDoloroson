@@ -44,7 +44,6 @@ public class TortoiseMovement : MonoBehaviour
     private Vector2 distanceVector;
     private Vector2 steering;
     private float wallAvoidDistance;
-    private Vector2 newPos;
 
     private AIStats aiStats;
     void Start()
@@ -80,8 +79,17 @@ public class TortoiseMovement : MonoBehaviour
         
     }
 
+    private void Awake()
+    {
+        // ensrue that the first time the position is written
+        GridAI.GetInstance().InitializePosition(this.gameObject, transform.position);
+    }
+
+    private Vector2 oldPosition;
     void Update()
     {
+        oldPosition = transform.position;
+
         //Check if the puppy is dying
         if (animator.GetBool("IsDead")) return;
 
@@ -96,10 +104,12 @@ public class TortoiseMovement : MonoBehaviour
         FlipSprite();
 
         // Calculate new position
-        newPos = new Vector2(transform.position.x, transform.position.y) + currentSpeed * Time.deltaTime;
+        Vector2 newPos = new Vector2(transform.position.x, transform.position.y) + currentSpeed * Time.deltaTime;
 
         // Update position
         transform.position = new Vector3(newPos.x, newPos.y, 0.0f);
+
+        GridAI.GetInstance().UpdatePosition(this.gameObject, oldPosition, newPos);
     }
 
     // Flips the sprite if it changes its direction
@@ -147,13 +157,21 @@ public class TortoiseMovement : MonoBehaviour
 
         separationVector = new Vector2(0.0f, 0.0f);
 
-        foreach (GameObject p in aiManager.AIList)
+        /*foreach (GameObject p in aiManager.AIList)
         {
             distance = currentPos - new Vector2(p.transform.position.x, p.transform.position.y);
             if (distance.magnitude <= area)
             {
                 separationVector += distance;
             }
+        }*/
+
+        // Get the closest positions of Grid to separate
+        //foreach (GameObject go in GridAI.GetInstance().GetClosePositions(currentPos))
+        foreach (GameObject go in GridAI.GetInstance().GetClosePositions(currentPos, area))
+        {
+            distance = currentPos - new Vector2(go.transform.position.x, go.transform.position.y);
+            separationVector += distance;
         }
 
         Vector3 auxPerp = Quaternion.Euler(0, 0, 90) * currentSpeed.normalized;
@@ -209,6 +227,7 @@ public class TortoiseMovement : MonoBehaviour
 
     private void OnDestroy()
     {
+        GridAI.GetInstance().RemoveFromGrid(this.gameObject);
         aiManager.RemoveAI(gameObject);
     }
 }
