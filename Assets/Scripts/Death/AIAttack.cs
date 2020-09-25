@@ -70,12 +70,15 @@ public class AIAttack : MonoBehaviour
             }
             else
             {
-                playerStats.IncreaseSorrow(aiStats.Sorrow);
-                playerStats.TimeSinceLastInteractionReset();
                 if (gameObject.GetComponent<BearMovement>() != null)
                 {
                     playerStats.IncreaseLove(aiStats.Love);
-                } 
+                }
+                else
+                {
+                    playerStats.IncreaseSorrow(aiStats.Sorrow);
+                }
+                playerStats.TimeSinceLastInteractionReset();
                 StartCoroutine(Die());
             }
 

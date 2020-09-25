@@ -62,8 +62,10 @@ public class Hug : MonoBehaviour
     {
         //Hug
         timeLastHug += Time.deltaTime;
-        if (Input.GetKey("space") && !dashing && timeLastHug >= hugCoolDown)
+        if (Input.GetKeyDown("space") && !dashing && timeLastHug >= hugCoolDown)
         {
+            Debug.Log(timeLastHug);
+            Debug.Log(hugCoolDown);
             StartCoroutine(OnDash());
         }
         
@@ -72,11 +74,13 @@ public class Hug : MonoBehaviour
     //Coroutine for the Hug animation
     IEnumerator OnHug()
     {
-        float timeAtStart = Time.time;
         if (!somethingHugged){
             invulnerable = false;
             playerStats.IncreaseSorrow(hugFailPenalitation);
         }
+
+        float timeAtStart = Time.time;
+
         animator.SetBool("IsHugging", true);
 
         bool isLookingRight = animator.GetBool("IsLookingRight");
@@ -104,13 +108,14 @@ public class Hug : MonoBehaviour
         invulnerable = false;
         somethingHugged = false;
         timeLastHug = 0.0f;
+        dashing = false;
     }
 
     IEnumerator OnDash()
     {
-        somethingHugged = false;
-        dashing = true;
         invulnerable = true;
+        dashing = true;
+        somethingHugged = false;
         float dashTimeAux = dashTime;
         if (dashBuff)
         {
@@ -121,8 +126,11 @@ public class Hug : MonoBehaviour
         {
             playerMovement.Dashing(dashSpeed);
         }
-        
+
+        animator.SetBool("IsDashing", true);
+  
         float timeAtStart = Time.time;
+
         while (dashTimeAux > Time.time - timeAtStart)
         {
             if (somethingHugged)
@@ -132,7 +140,7 @@ public class Hug : MonoBehaviour
             yield return null;
         }
         playerMovement.NoDashing();
-        dashing = false;
+        animator.SetBool("IsDashing", false);
         StartCoroutine(OnHug());
     }
 
