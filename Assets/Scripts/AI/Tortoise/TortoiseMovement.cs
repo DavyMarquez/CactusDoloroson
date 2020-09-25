@@ -44,6 +44,7 @@ public class TortoiseMovement : MonoBehaviour
     private Vector2 distanceVector;
     private Vector2 steering;
     private float wallAvoidDistance;
+    private bool isDead = false;
 
     private AIStats aiStats;
     void Start()
@@ -88,10 +89,16 @@ public class TortoiseMovement : MonoBehaviour
     private Vector2 oldPosition;
     void Update()
     {
+        if (isDead) return;
+
         oldPosition = transform.position;
 
         //Check if the puppy is dying
-        if (animator.GetBool("IsDead")) return;
+        if (animator.GetBool("IsDead"))
+        {
+            StartCoroutine(Die());
+            return;
+        }
 
         Steering();
 
@@ -228,6 +235,39 @@ public class TortoiseMovement : MonoBehaviour
     private void OnDestroy()
     {
         GridAI.GetInstance().RemoveFromGrid(this.gameObject);
-        //aiManager.RemoveAI(gameObject);
+        AIManager.GetInstance().IncreaseHuggedTortoises();
+    }
+
+    IEnumerator Die()
+    {
+        isDead = true;
+        float timeAtStart = Time.time;
+
+        Destroy(gameObject.GetComponent<AIAttack>());
+        Destroy(gameObject.GetComponent<AIStats>());
+
+        Collider2D[] collisionArray = gameObject.GetComponents<Collider2D>();
+        foreach (Collider2D collider in collisionArray)
+        {
+            if (collider.isTrigger)
+            {
+                Destroy(collider);
+            }
+        }
+
+        if (gameObject.GetComponent<AIAttack>().deadByHug)
+        {
+            AIManager.GetInstance().IncreaseHuggedTortoises();
+        }
+
+        float deathTimer = gameObject.GetComponent<AIAttack>().deathTimer;
+        while (deathTimer > Time.time - timeAtStart)
+        {
+            yield return null;
+        }
+        //Sprite sólo caparazón
+
+        Destroy(gameObject.GetComponent<Animator>());
+        Destroy(this);
     }
 }

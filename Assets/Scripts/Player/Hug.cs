@@ -71,8 +71,6 @@ public class Hug : MonoBehaviour
         timeLastHug += Time.deltaTime;
         if (Input.GetKeyDown("space") && !dashing && timeLastHug >= hugCoolDown)
         {
-            Debug.Log(timeLastHug);
-            Debug.Log(hugCoolDown);
             StartCoroutine(OnDash());
         }
         
@@ -138,16 +136,7 @@ public class Hug : MonoBehaviour
         animator.SetBool("IsDashing", true);
 
         float timeAtStart = Time.time;
-        float vanishingProportion;
-
-        if (reverseTransparencyAnimation)
-        {
-            vanishingProportion = transparencyWhileDashing / dashTimeAux;
-        }
-        else
-        {
-            vanishingProportion = (1.0f - transparencyWhileDashing) / dashTimeAux;
-        }
+        float vanishingProportion = transparencyWhileDashing / dashTimeAux;
 
         Color color;
 
@@ -162,7 +151,7 @@ public class Hug : MonoBehaviour
             }
             else
             {
-                color = new Color(1, 1, 1, transparencyWhileDashing + vanishingProportion * timeRightNow);
+                color = new Color(1, 1, 1, 1 - transparencyWhileDashing + vanishingProportion * timeRightNow);
             }
             gameObject.GetComponent<SpriteRenderer>().color = color;
 
@@ -174,6 +163,8 @@ public class Hug : MonoBehaviour
         }
         playerMovement.NoDashing();
         animator.SetBool("IsDashing", false);
+        color = new Color(1, 1, 1, 1);
+        gameObject.GetComponent<SpriteRenderer>().color = color;
         StartCoroutine(OnHug());
     }
 

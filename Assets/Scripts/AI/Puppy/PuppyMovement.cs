@@ -50,6 +50,7 @@ public class PuppyMovement : MonoBehaviour
     private Vector2 wallAvoidance;
     private Vector2 distance;
     private float wallAvoidDistance;
+    private bool isDead = false;
 
     private AIStats aiStats;
     // Start is called before the first frame update
@@ -99,11 +100,15 @@ public class PuppyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if (isDead) return;
+
         oldPosition = transform.position;
 
         //Check if the puppy is dying
-        if (animator.GetBool("IsDead")) return;
+        if (animator.GetBool("IsDead")) {
+            StartCoroutine(Die());
+            return;
+        }
 
         Steering();
 
@@ -271,6 +276,33 @@ public class PuppyMovement : MonoBehaviour
     private void OnDestroy()
     {
         GridAI.GetInstance().RemoveFromGrid(this.gameObject);
-        //aiManager.RemoveAI(gameObject);
+    }
+
+    IEnumerator Die()
+    {
+        isDead = true;
+        float timeAtStart = Time.time;
+        if (gameObject.GetComponent<AIAttack>().deadByHug)
+        {
+            AIManager.GetInstance().IncreaseHuggedPuppies();
+        }
+
+        Vector3 aux = new Vector3(transform.position.x, transform.position.y, 1);
+        transform.position = aux;
+
+        Destroy(gameObject.GetComponent<Rigidbody2D>());
+        Collider2D[] collisionArray = gameObject.GetComponents<Collider2D>();
+        foreach (Collider2D collider in collisionArray)
+        {
+            Destroy(collider);
+        }
+
+        float deathTimer = gameObject.GetComponent<AIAttack>().deathTimer;
+        while (deathTimer > Time.time - timeAtStart)
+        {
+            yield return null;
+        }
+
+        Destroy(gameObject);
     }
 }

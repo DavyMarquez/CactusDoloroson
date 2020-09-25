@@ -54,6 +54,7 @@ public class Flower : MonoBehaviour
             collision.transform.gameObject.GetComponent<PlayerStats>().IncreaseSorrow(GetComponent<AIStats>().Sorrow);
             GetComponent<Collider2D>().enabled = false;
             GetComponent<Renderer>().enabled = false;
+            AIManager.GetInstance().IncreasePickedFlowers();
         }
     }
 
