@@ -14,7 +14,6 @@ public class PlayerStats : MonoBehaviour
 
     public GenericBar sorrowBar;
 
-    private AIManager aiManager;
     public bool Smell
     {
         get { return smell; }
@@ -168,6 +167,8 @@ public class PlayerStats : MonoBehaviour
         animator.SetBool("IsDying", true);
         GetComponent<Rigidbody2D>().MovePosition(transform.position);
         float timeAtStart = Time.time;
+        AIManager.GetInstance().TimeOfGame = timeAtStart;
+        Debug.Log(AIManager.GetInstance().TimeOfGame);
         while(3 > Time.time - timeAtStart)
         {
             yield return null;
