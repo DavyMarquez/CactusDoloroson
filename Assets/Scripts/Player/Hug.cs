@@ -25,6 +25,11 @@ public class Hug : MonoBehaviour
     [Range(0.0f, 100.0f)]
     public float hugFailPenalitation = 5.0f;
 
+    [Range(0.0f, 1.0f)]
+    public float transparencyWhileDashing = 1.0f;
+
+    public bool reverseTransparencyAnimation = false;
+
     [Min(0)]
     public float hugCoolDown = 0.0f;
     private float timeLastHug = 0.0f;
@@ -128,11 +133,36 @@ public class Hug : MonoBehaviour
         }
 
         animator.SetBool("IsDashing", true);
-  
+
         float timeAtStart = Time.time;
+        float vanishingProportion;
+
+        if (reverseTransparencyAnimation)
+        {
+            vanishingProportion = transparencyWhileDashing / dashTimeAux;
+        }
+        else
+        {
+            vanishingProportion = (1.0f - transparencyWhileDashing) / dashTimeAux;
+        }
+
+        Color color;
+
+        float timeRightNow;
 
         while (dashTimeAux > Time.time - timeAtStart)
         {
+            timeRightNow = Time.time - timeAtStart;
+            if (reverseTransparencyAnimation)
+            {
+                color = new Color(1, 1, 1, 1 - vanishingProportion * timeRightNow);
+            }
+            else
+            {
+                color = new Color(1, 1, 1, transparencyWhileDashing + vanishingProportion * timeRightNow);
+            }
+            gameObject.GetComponent<SpriteRenderer>().color = color;
+
             if (somethingHugged)
             {
                 break;
