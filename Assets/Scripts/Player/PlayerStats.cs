@@ -71,11 +71,11 @@ public class PlayerStats : MonoBehaviour
         dashBuffNotified = false;
         smell = false;
         animator = gameObject.GetComponent<Animator>();
-        aiManager = FindObjectOfType<AIManager>();
+        /*aiManager = FindObjectOfType<AIManager>();
         if (aiManager == null)
         {
             Debug.LogError("No AIManager found in scene");
-        }
+        }*/
 
         loveBar.SetMax(100, love);
         sorrowBar.SetMax(100, sorrow);
@@ -84,6 +84,9 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //GridAI.GetInstance().ShowGrid();
+
         UpdateNotifications();
 
         timeSinceLastInteraction += Time.deltaTime;
@@ -194,7 +197,7 @@ public class PlayerStats : MonoBehaviour
         smell = value;
         Debug.LogWarning("setting the variable " + value);
         
-        if (aiManager != null)
+        /*if (aiManager != null)
         {
             foreach (GameObject p in aiManager.AIList)
             {
@@ -203,6 +206,6 @@ public class PlayerStats : MonoBehaviour
                     aiStats.IsAvoidingPlayer = value;
                 }
             }
-        }
+        }*/
     }
 }

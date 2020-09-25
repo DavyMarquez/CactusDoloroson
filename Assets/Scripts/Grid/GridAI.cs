@@ -43,6 +43,31 @@ public class GridAI
 
         return result;
     }
+    
+    public GOList GetClosePositions(Vector2 pos, float distance)
+    {
+        int cells = (int) distance / cellSize;
+
+
+        int x = ((int)pos.x - minX) / cellSize;
+        int y = ((int)pos.y - minY) / cellSize;
+
+        GOList result = new GOList();
+        for (int i = -cells / 2; i < cells / 2; ++i)
+        {
+            for (int j = -cells / 2; j < cells / 2; ++j)
+            {
+                int ix = i + x;
+                int jy = j + y;
+                if (ix >= 0 && ix < numX &&
+                    jy >= 0 && jy < numY)
+                {
+                    result.AddRange(grid[ix, jy]);
+                }
+            }
+        }
+        return result;
+    }
 
     public void InitializePosition(GameObject go, Vector2 pos)
     {
@@ -71,6 +96,7 @@ public class GridAI
         }
     }
 
+
     public void RemoveFromGrid(GameObject go)
     {
         Vector2 pi = check[go];
@@ -93,7 +119,6 @@ public class GridAI
     // private things
     private static GridAI instance = null;
 
-    //
     private const int minX = -50, maxX = 50, minY = -50, maxY = 50;
     private const int cellSize = 1;
 
@@ -111,6 +136,19 @@ public class GridAI
             {
                 grid[i, j] = new GOList();
             }
+        }
+    }
+
+    public void ShowGrid()
+    {
+        Vector2 start = new Vector2(minX * cellSize, maxY * cellSize);
+        for(int i = 0; i <= maxX * 2.0f; ++i)
+        {
+            Debug.DrawLine(start + new Vector2(0.0f, -cellSize * i) , 
+                start + new Vector2(0.0f, -cellSize * i) + new Vector2(1.0f, 0.0f) * maxX * cellSize * 2.0f, Color.green);
+
+            Debug.DrawLine(start + new Vector2(cellSize * i, 0.0f), 
+                start + new Vector2(cellSize * i, 0.0f) + new Vector2(0.0f, -1.0f) * maxY * cellSize* 2.0f, Color.green);
         }
     }
 }

@@ -7,7 +7,7 @@ public class BearMovement : MonoBehaviour
 
     public float speed = 6.0f;
 
-    public float bounceDistance = 1.5f;
+    public float bounceDistance = 3.0f;
     private Vector2 direction;
 
     public Animator animator;
@@ -36,7 +36,7 @@ public class BearMovement : MonoBehaviour
             Random.Range(0.0f, 1.0f)));
         RaycastHit2D hit = Physics2D.Raycast(start, direction, bounceDistance);
         
-        if (hit.collider != null &&  hit.transform.gameObject.tag != "AI" && hit.transform.gameObject.tag != "Player")
+        if (hit.collider != null /*&&  hit.transform.gameObject.tag != "AI"*/)
         {
             direction = 2 * Vector2.Dot(hit.normal, -1.0f * direction) * hit.normal + direction;
             Debug.DrawLine(hit.point, hit.point + direction.normalized * 1.5f, Color.red);
