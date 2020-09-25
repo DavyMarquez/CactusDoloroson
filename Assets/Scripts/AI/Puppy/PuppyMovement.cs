@@ -6,7 +6,7 @@ using UnityEditor;
 
 public class PuppyMovement : MonoBehaviour
 {
-    private AIManager aiManager;
+    //private AIManager aiManager;
 
     [SerializeField]
     private GameObject player;
@@ -55,13 +55,13 @@ public class PuppyMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        aiManager = FindObjectOfType<AIManager>();
+        /*aiManager = FindObjectOfType<AIManager>();
         if (aiManager == null)
         {
             Debug.LogError("No AIManager found in scene");
         }
         // Add this gameobject to ai list
-        aiManager.AddAI(gameObject);
+        aiManager.AddAI(gameObject);*/
 
         player = GameObject.FindGameObjectWithTag("Player");
 
@@ -271,6 +271,6 @@ public class PuppyMovement : MonoBehaviour
     private void OnDestroy()
     {
         GridAI.GetInstance().RemoveFromGrid(this.gameObject);
-        aiManager.RemoveAI(gameObject);
+        //aiManager.RemoveAI(gameObject);
     }
 }

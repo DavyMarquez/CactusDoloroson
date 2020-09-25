@@ -53,12 +53,10 @@ public class GridAI
         int y = ((int)pos.y - minY) / cellSize;
 
         GOList result = new GOList();
-        int count = 0;
         for (int i = -cells / 2; i < cells / 2; ++i)
         {
             for (int j = -cells / 2; j < cells / 2; ++j)
             {
-                count += 1;
                 int ix = i + x;
                 int jy = j + y;
                 if (ix >= 0 && ix < numX &&
@@ -68,7 +66,6 @@ public class GridAI
                 }
             }
         }
-        Debug.Log(count);
         return result;
     }
 
@@ -141,5 +138,10 @@ public class GridAI
                 grid[i, j] = new GOList();
             }
         }
+    }
+
+    public void ShowGrid()
+    {
+
     }
 }
