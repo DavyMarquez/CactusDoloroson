@@ -55,7 +55,10 @@ public class BearMovement : MonoBehaviour
         // Calculate new position
         newPos = new Vector2(transform.position.x, transform.position.y) +  direction * speed * Time.deltaTime;
 
-        transform.position = new Vector3(newPos.x, newPos.y, 0.0f);
+        //transform.position = new Vector3(newPos.x, newPos.y, 0.0f);
+
+        GetComponent<Rigidbody2D>().MovePosition(transform.position  + 
+            speed * new Vector3(direction.x, direction.y, 0.0f) * Time.deltaTime);
     }
 
     void FlipSprite()

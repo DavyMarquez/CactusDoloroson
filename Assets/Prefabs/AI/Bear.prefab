@@ -101,8 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4346cee039c0e4bbec9e8bc84d5def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 25
-  bounceDistance: 0.5
+  speed: 50
+  bounceDistance: 2
   animator: {fileID: 0}
 --- !u!58 &3753050540618757040
 CircleCollider2D:
@@ -135,6 +135,7 @@ MonoBehaviour:
   deathTimer: 2
   smellTimer: 2
   animator: {fileID: 0}
+  deadByHug: 0
 --- !u!114 &3753050540618757041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,4 +205,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4

@@ -14,12 +14,16 @@ public class PlayerStats : MonoBehaviour
 
     public GenericBar sorrowBar;
 
+    public ParticleSystem stink;
+
+    private AIManager aiManager;
     public bool Smell
     {
         get { return smell; }
         set { smell = value; }
     }
 
+    private bool changedStinkStatus = false;
 
     [Range(0.0f, 100.0f)]
     public float speedBuffPercentage = 50.0f;
@@ -83,7 +87,16 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(smell && !changedStinkStatus)
+        {
+            changedStinkStatus = true;
+            stink.Play();
+        }
+        if(!smell && changedStinkStatus)
+        {
+            stink.Stop();
+            changedStinkStatus = false;
+        }
         //GridAI.GetInstance().ShowGrid();
 
         UpdateNotifications();

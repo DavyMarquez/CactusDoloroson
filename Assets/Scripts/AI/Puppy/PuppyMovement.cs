@@ -178,7 +178,7 @@ public class PuppyMovement : MonoBehaviour
         }
         else {
             desiredSpeed = distanceVector * speed;
-            if (aiStats.IsAvoidingPlayer)
+            if (player.GetComponent<PlayerStats>().Smell)
             {
                 color = Color.yellow;
                 Vector3 aux = Quaternion.Euler(0, 0, 90) * desiredSpeed.normalized;
