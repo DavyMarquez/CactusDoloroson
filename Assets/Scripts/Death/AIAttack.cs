@@ -82,7 +82,15 @@ public class AIAttack : MonoBehaviour
                 playerStats.TimeSinceLastInteractionReset();
                 animator.SetBool("IsDead", true);
             }
-
+            Collider2D[] collisionArray = gameObject.GetComponents<Collider2D>();
+            foreach (Collider2D c in collisionArray)
+            {
+                if (!c.isTrigger)
+                {
+                    Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), c, false);
+                    GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+                }
+            }
         }
     }
 }
