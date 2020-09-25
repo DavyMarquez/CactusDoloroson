@@ -52,28 +52,33 @@ public class AIManager
         return instance;
     }
 
-    public void increaseHuggedPuppies()
+    public void IncreaseHuggedPuppies()
     {
         huggedPuppies++;
+        Debug.Log(huggedPuppies);
     }
 
-    public void increaseHuggedSkunks()
+    public void IncreaseHuggedSkunks()
     {
         huggedSkunks++;
+        Debug.Log(huggedSkunks);
     }
 
-    public void increaseHuggedTortoises()
+    public void IncreaseHuggedTortoises()
     {
         huggedTortoises++;
+        Debug.Log(huggedTortoises);
     }
 
-    public void increaseHuggedBears()
+    public void IncreaseHuggedBears()
     {
         huggedBears++;
+        Debug.Log(huggedBears);
     }
 
-    public void increasePickedFlowers()
+    public void IncreasePickedFlowers()
     {
         pickedFlowers++;
+        Debug.Log(pickedFlowers);
     }
 }

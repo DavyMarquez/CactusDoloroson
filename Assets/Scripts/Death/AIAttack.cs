@@ -8,14 +8,14 @@ public class AIAttack : MonoBehaviour
     
     private AIStats aiStats;
 
-    [SerializeField]
-    private float deathTimer = 2.0f;
+    public float deathTimer = 2.0f;
 
     [SerializeField]
     private float smellTimer = 2.0f;
 
     public Animator animator;
     private GameObject player;
+    public bool deadByHug = false;
 
     private PlayerStats playerStats;
     // Start is called before the first frame update
@@ -64,7 +64,8 @@ public class AIAttack : MonoBehaviour
                             playerStats.RemoveSmellInTime(smellTimer);
                         }
 
-                        StartCoroutine(Die());
+                        deadByHug = true;
+                        animator.SetBool("IsDead", true);
                     }
                 }
             }
@@ -79,37 +80,9 @@ public class AIAttack : MonoBehaviour
                     playerStats.IncreaseSorrow(aiStats.Sorrow);
                 }
                 playerStats.TimeSinceLastInteractionReset();
-                StartCoroutine(Die());
+                animator.SetBool("IsDead", true);
             }
 
         }
     }
-
-    IEnumerator Die()
-    {
-        float timeAtStart = Time.time;
-        if (animator != null)
-        {
-            animator.SetBool("IsDead", true);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
-        Destroy(gameObject.GetComponent<Rigidbody2D>());
-        Collider2D[] collisionArray = gameObject.GetComponents<Collider2D>();
-        foreach (Collider2D collider in collisionArray)
-        {
-            Destroy(collider);
-        }
-
-        while (deathTimer > Time.time - timeAtStart)
-        {
-            yield return null;
-        }
-
-        Destroy(gameObject);
-    }
-
 }

@@ -46,7 +46,8 @@ public class SkunkMovement : MonoBehaviour
     private Vector2 distanceVector;
     private Vector2 steering;
     private float wallAvoidDistance;
-    
+    private bool isDead = false;
+
 
     void Start()
     {
@@ -90,9 +91,16 @@ public class SkunkMovement : MonoBehaviour
 
     void Update()
     {
+        if (isDead) return;
+
         oldPosition = transform.position;
-        //Check if the puppy is dying
-        if (animator.GetBool("IsDead")) return;
+
+        //Check if the skunk is dying
+        if (animator.GetBool("IsDead"))
+        {
+            StartCoroutine(Die());
+            return;
+        }
 
         Steering();
 
@@ -231,6 +239,33 @@ public class SkunkMovement : MonoBehaviour
     private void OnDestroy()
     {
         GridAI.GetInstance().RemoveFromGrid(this.gameObject);
-        //aiManager.RemoveAI(gameObject);
+    }
+
+    IEnumerator Die()
+    {
+        isDead = true;
+        float timeAtStart = Time.time;
+        if (gameObject.GetComponent<AIAttack>().deadByHug)
+        {
+            AIManager.GetInstance().IncreaseHuggedSkunks();
+        }
+
+        Vector3 aux = new Vector3(transform.position.x, transform.position.y, 1);
+        transform.position = aux;
+
+        Destroy(gameObject.GetComponent<Rigidbody2D>());
+        Collider2D[] collisionArray = gameObject.GetComponents<Collider2D>();
+        foreach (Collider2D collider in collisionArray)
+        {
+            Destroy(collider);
+        }
+
+        float deathTimer = gameObject.GetComponent<AIAttack>().deathTimer;
+        while (deathTimer > Time.time - timeAtStart)
+        {
+            yield return null;
+        }
+
+        Destroy(gameObject);
     }
 }

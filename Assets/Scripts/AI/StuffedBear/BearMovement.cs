@@ -13,6 +13,7 @@ public class BearMovement : MonoBehaviour
     public Animator animator;
     private bool isLookingRight = true;
     private Vector2 newPos = new Vector2(0.0f, 0.0f);
+    private bool isDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +30,14 @@ public class BearMovement : MonoBehaviour
     void Update()
     {
 
-        if (animator != null && animator.GetBool("IsDead")) return;
+        if (isDead) return;
+
+        //Check if the puppy is dying
+        if (animator.GetBool("IsDead"))
+        {
+            StartCoroutine(Die());
+            return;
+        }
 
         Vector2 start = transform.position;
         Debug.DrawLine(start, start + direction.normalized * 1.5f, new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f),
@@ -68,5 +76,31 @@ public class BearMovement : MonoBehaviour
                 isLookingRight = false;
             }
         }
+    }
+
+    IEnumerator Die()
+    {
+        isDead = true;
+        float timeAtStart = Time.time;
+
+        AIManager.GetInstance().IncreaseHuggedBears();
+
+        Vector3 aux = new Vector3(transform.position.x, transform.position.y, 1);
+        transform.position = aux;
+
+        Destroy(gameObject.GetComponent<Rigidbody2D>());
+        Collider2D[] collisionArray = gameObject.GetComponents<Collider2D>();
+        foreach (Collider2D collider in collisionArray)
+        {
+            Destroy(collider);
+        }
+
+        float deathTimer = gameObject.GetComponent<AIAttack>().deathTimer;
+        while (deathTimer > Time.time - timeAtStart)
+        {
+            yield return null;
+        }
+
+        Destroy(gameObject);
     }
 }
