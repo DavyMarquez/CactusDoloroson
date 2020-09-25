@@ -2,37 +2,78 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIManager : MonoBehaviour
+public class AIManager
 {
+    private static AIManager instance = null;
 
-    // All ais in the scene
-    [SerializeField]
-    private List<GameObject> aiList = new List<GameObject>();
-
-    public List<GameObject> AIList
+    private int huggedPuppies = 0;
+    public int HuggedPuppies
     {
-        get { return aiList; }
+        get { return huggedPuppies; }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private int huggedSkunks = 0;
+    public int HuggedSkunks
     {
-        
+        get { return huggedSkunks; }
     }
 
-    // Update is called once per frame
-    void Update()
+    private int huggedTortoises = 0;
+    public int HuggedTortoises
     {
-        
+        get { return huggedTortoises; }
     }
 
-    public void AddAI(GameObject go)
+    private int huggedBears = 0;
+    public int HuggedBears
     {
-        aiList.Add(go);
+        get { return huggedBears; }
     }
 
-    public void RemoveAI(GameObject go)
+    private int pickedFlowers = 0;
+    public int PickedFlowers
     {
-        aiList.Remove(go);
+        get { return pickedFlowers; }
+    }
+
+    private float timeOfGame = 0.0f;
+    public float TimeOfGame
+    {
+        get { return timeOfGame; }
+        set { timeOfGame = value; }
+    }
+
+    public static AIManager GetInstance()
+    {
+        if(instance == null)
+        {
+            instance = new AIManager();
+        }
+        return instance;
+    }
+
+    public void increaseHuggedPuppies()
+    {
+        huggedPuppies++;
+    }
+
+    public void increaseHuggedSkunks()
+    {
+        huggedSkunks++;
+    }
+
+    public void increaseHuggedTortoises()
+    {
+        huggedTortoises++;
+    }
+
+    public void increaseHuggedBears()
+    {
+        huggedBears++;
+    }
+
+    public void increasePickedFlowers()
+    {
+        pickedFlowers++;
     }
 }

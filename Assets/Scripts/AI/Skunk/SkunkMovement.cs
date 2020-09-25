@@ -77,7 +77,6 @@ public class SkunkMovement : MonoBehaviour
                 wallAvoidDistance = c.radius * 1.5f;
             }
         }
-
     }
 
     void Update()
