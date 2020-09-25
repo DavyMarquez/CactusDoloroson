@@ -84,6 +84,9 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //GridAI.GetInstance().ShowGrid();
+
         UpdateNotifications();
 
         timeSinceLastInteraction += Time.deltaTime;

@@ -119,7 +119,6 @@ public class GridAI
     // private things
     private static GridAI instance = null;
 
-    //
     private const int minX = -50, maxX = 50, minY = -50, maxY = 50;
     private const int cellSize = 1;
 
@@ -142,6 +141,14 @@ public class GridAI
 
     public void ShowGrid()
     {
+        Vector2 start = new Vector2(minX * cellSize, maxY * cellSize);
+        for(int i = 0; i <= maxX * 2.0f; ++i)
+        {
+            Debug.DrawLine(start + new Vector2(0.0f, -cellSize * i) , 
+                start + new Vector2(0.0f, -cellSize * i) + new Vector2(1.0f, 0.0f) * maxX * cellSize * 2.0f, Color.green);
 
+            Debug.DrawLine(start + new Vector2(cellSize * i, 0.0f), 
+                start + new Vector2(cellSize * i, 0.0f) + new Vector2(0.0f, -1.0f) * maxY * cellSize* 2.0f, Color.green);
+        }
     }
 }
