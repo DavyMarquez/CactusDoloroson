@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c1e6867dd70f2e4a96a5d92f4104c61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnTime: 5
+  respawnTime: 30
   timeToFlip: 3
 --- !u!114 &5087149697335310631
 MonoBehaviour:

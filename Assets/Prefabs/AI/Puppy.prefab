@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   area: 1.4
-  speed: 6
+  speed: 7
   detectionArea: 50
   wanderTime: 2
 --- !u!58 &5573422759254690462
@@ -289,3 +289,4 @@ MonoBehaviour:
   deathTimer: 2
   smellTimer: 2
   animator: {fileID: 1474522191}
+  deadByHug: 0
