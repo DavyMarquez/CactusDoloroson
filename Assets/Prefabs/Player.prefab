@@ -4940,7 +4940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buffSpeedMultiplayer: 3
-  speed: 20
+  speed: 25
 --- !u!95 &6922466667368955292
 Animator:
   serializedVersion: 3
@@ -5016,10 +5016,10 @@ MonoBehaviour:
   dashBuffedTime: 2
   dashSpeed: 15
   hugFailPenalitation: 5
-  transparencyWhileDashing: 0.047
-  reverseTransparencyAnimation: 0
+  transparencyWhileDashing: 0.8
+  reverseTransparencyAnimation: 1
   dust: {fileID: 1598076715}
-  hugCoolDown: 1
+  hugCoolDown: 0.3
   invulnerable: 0
   hitWhileDashing: 0
   somethingHugged: 0
@@ -5040,9 +5040,10 @@ MonoBehaviour:
   loveBar: {fileID: 6910321145789812664, guid: 64372fecb71953b4d861ac388df796ba, type: 3}
   sorrowBar: {fileID: 6997271603321054582, guid: 5e403dcdca62fc049896bb0bbe481d55,
     type: 3}
+  stink: {fileID: 0}
   speedBuffPercentage: 50
   dashBuffPercentage: 100
-  love: 100
+  love: 0
   sorrow: 0
   gameOver: 0
   sorrowIncreaseRate: 1
