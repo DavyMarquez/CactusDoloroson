@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87846c44694b4594e8d6d0e0930cf3f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  love: 5
+  love: 8
   sorrow: 15
 --- !u!50 &6067005558311267614
 Rigidbody2D:
