@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Prefabs/GameMgr.prefab.meta
 guid: 0671a6e66f5b1c943ba86ecb01f31df0
 PrefabImporter:
+=======
+guid: 97ca174af7bfd9e4392fd079bdf83079
+NativeFormatImporter:
+>>>>>>> a08523142d02c1a34fabdebc176d8dade53b5923:Assets/Animation/MainMenu/Background.anim.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

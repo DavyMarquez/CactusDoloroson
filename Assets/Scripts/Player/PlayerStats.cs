@@ -125,13 +125,13 @@ public class PlayerStats : MonoBehaviour
             if (!startedToIncreaseSorrow)
             {
                 startedToIncreaseSorrow = true;
-                // PLAY AUDIO HERE
+                source.clip = sorrowClip;
+                source.Play();
             }
             sorrow = Mathf.Min(sorrow + sorrowIncreaseRate * Time.deltaTime, 100.0f);
             sorrowBar.SetValue(sorrow);
-            //ESTE NO TIRA
-            source.clip = sorrowClip;
-            source.Play();
+            
+            
         }
         if (sorrow >= 100.0f && !animator.GetBool("IsDying") && gameOver)
         {
