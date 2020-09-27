@@ -18,6 +18,10 @@ public class AIAttack : MonoBehaviour
     public bool deadByHug = false;
 
     private PlayerStats playerStats;
+
+    //Sound
+    private AudioSource source;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +37,9 @@ public class AIAttack : MonoBehaviour
         aiStats = gameObject.GetComponent<AIStats>();
 
         animator = gameObject.GetComponent<Animator>();
+
+        source = gameObject.GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -66,6 +73,7 @@ public class AIAttack : MonoBehaviour
 
                         deadByHug = true;
                         animator.SetBool("IsDead", true);
+                        source.Play();
                     }
                 }
             }
@@ -81,6 +89,7 @@ public class AIAttack : MonoBehaviour
                 }
                 playerStats.TimeSinceLastInteractionReset();
                 animator.SetBool("IsDead", true);
+                source.Play();
             }
             Collider2D[] collisionArray = gameObject.GetComponents<Collider2D>();
             foreach (Collider2D c in collisionArray)

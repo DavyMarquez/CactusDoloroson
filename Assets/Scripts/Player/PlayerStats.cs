@@ -10,6 +10,13 @@ public class PlayerStats : MonoBehaviour
 
     private bool smell = false;
 
+    //Audio
+    private AudioSource source;
+    public AudioClip loveClip;
+    public AudioClip sorrowClip;
+    public AudioClip deathSound;
+    //Fin del audio
+
     public GenericBar loveBar;
 
     public GenericBar sorrowBar;
@@ -81,6 +88,8 @@ public class PlayerStats : MonoBehaviour
         dashBuffNotified = false;
         smell = false;
         animator = gameObject.GetComponent<Animator>();
+        source = gameObject.GetComponent<AudioSource>();
+
         /*aiManager = FindObjectOfType<AIManager>();
         if (aiManager == null)
         {
@@ -113,6 +122,9 @@ public class PlayerStats : MonoBehaviour
         {
             sorrow = Mathf.Min(sorrow + sorrowIncreaseRate * Time.deltaTime, 100.0f);
             sorrowBar.SetValue(sorrow);
+            //ESTE NO TIRA
+            source.clip = sorrowClip;
+            source.Play();
         }
         if (sorrow >= 100.0f && !animator.GetBool("IsDying") && gameOver)
         {
@@ -177,17 +189,23 @@ public class PlayerStats : MonoBehaviour
         {
             speedBuffNotified = true;
             gameObject.GetComponent<PlayerMovement>().ApplySpeedBuff();
+            source.clip = loveClip;
+            source.Play();
         }
         if (love >= dashBuffPercentage && !dashBuffNotified)
         {
             dashBuffNotified = true;
             gameObject.GetComponent<Hug>().ApplyDashBuff();
+            source.clip = loveClip;
+            source.Play();
         }
     }
 
     IEnumerator GameOver(float timeToWait)
     {
         Destroy(gameObject.GetComponent<PlayerMovement>());
+        source.clip = deathSound;
+        source.Play();
         animator.SetBool("IsDying", true);
         GetComponent<Rigidbody2D>().MovePosition(transform.position);
         float timeAtStart = Time.time;
