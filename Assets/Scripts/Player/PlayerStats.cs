@@ -106,8 +106,8 @@ public class PlayerStats : MonoBehaviour
         AIManager.GetInstance().HuggedPuppies = 0;
         AIManager.GetInstance().HuggedSkunks = 0;
         AIManager.GetInstance().HuggedTortoises = 0;
-        AIManager.GetInstance().PickedFlowers = timeAtStart;
-        AIManager.GetInstance().TimeOfGame = timeAtStart;
+        AIManager.GetInstance().PickedFlowers = 0;
+        AIManager.GetInstance().TimeOfGame = 0;
     }
 
     // Update is called once per frame
