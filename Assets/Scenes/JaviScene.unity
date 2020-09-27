@@ -27778,7 +27778,7 @@ PrefabInstance:
     - target: {fileID: 7389199981828556466, guid: 20b546085214b894aa9eed6672e44a20,
         type: 3}
       propertyPath: buffSpeedMultiplayer
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 9194416770071536012, guid: 20b546085214b894aa9eed6672e44a20,
         type: 3}
