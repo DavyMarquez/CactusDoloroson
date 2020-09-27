@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5780752870735018439, guid: fd754b56a96ac2a40887f99bdea6dac6,
+  m_Sprite: {fileID: 3727806694436973734, guid: 504ca751da2fd2b429d8cdee185295fc,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -106,6 +106,8 @@ MonoBehaviour:
   speed: 1.5
   detectionArea: 50
   wanderTime: 3
+  deathSprite: {fileID: 5040968659695158890, guid: 504ca751da2fd2b429d8cdee185295fc,
+    type: 3}
 --- !u!58 &6202632892900014191
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -167,6 +169,7 @@ MonoBehaviour:
   deathTimer: 2
   smellTimer: 2
   animator: {fileID: 0}
+  deadByHug: 0
 --- !u!95 &6202632892900014188
 Animator:
   serializedVersion: 3
@@ -177,7 +180,7 @@ Animator:
   m_GameObject: {fileID: 6202632892900014196}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1bd9cbe3a7c494e48a7951899d8b84ba, type: 2}
+  m_Controller: {fileID: 9100000, guid: ff7b2f9d5e7e38f4ba777174496e224d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

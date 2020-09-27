@@ -30,7 +30,7 @@ public class TortoiseMovement : MonoBehaviour
 
     private bool isWandering;
 
-    private bool isLookingRight = false;
+    private bool isLookingRight = true;
 
     private Vector2 desiredSpeed;
 
@@ -45,6 +45,9 @@ public class TortoiseMovement : MonoBehaviour
     private Vector2 steering;
     private float wallAvoidDistance;
     private bool isDead = false;
+
+    [SerializeField]
+    private Sprite deathSprite = null;
 
     private AIStats aiStats;
     void Start()
@@ -235,7 +238,6 @@ public class TortoiseMovement : MonoBehaviour
     private void OnDestroy()
     {
         GridAI.GetInstance().RemoveFromGrid(this.gameObject);
-        AIManager.GetInstance().IncreaseHuggedTortoises();
     }
 
     IEnumerator Die()
@@ -266,6 +268,7 @@ public class TortoiseMovement : MonoBehaviour
             yield return null;
         }
         //Sprite sólo caparazón
+        gameObject.GetComponent<SpriteRenderer>().sprite = deathSprite;
 
         Destroy(gameObject.GetComponent<Animator>());
         Destroy(this);
