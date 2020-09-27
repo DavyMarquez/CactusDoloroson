@@ -25,14 +25,14 @@ public class Spawner : MonoBehaviour
     [Min(0.0f)]
     public float timeBetweenSpawns = 5.0f;
 
-    private float timeSinceLastSpawn = 0.0f;
+    private float timeSinceLastSpawn = 5.0f;
 
     private Camera cam;
     // Start is called before the first frame update
     void Start()
     {
         cam = FindObjectOfType<Camera>();
-        timeSinceLastSpawn = 0.0f;
+        timeSinceLastSpawn = timeBetweenSpawns;
     }
 
     // Update is called once per frame
