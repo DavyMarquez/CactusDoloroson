@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.SymbolStore;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -100,6 +101,13 @@ public class PlayerStats : MonoBehaviour
 
         loveBar.SetMax(100, love);
         sorrowBar.SetMax(100, sorrow);
+
+        AIManager.GetInstance().TimeOfGame = Time.time;
+        AIManager.GetInstance().HuggedPuppies = 0;
+        AIManager.GetInstance().HuggedSkunks = 0;
+        AIManager.GetInstance().HuggedTortoises = 0;
+        AIManager.GetInstance().PickedFlowers = timeAtStart;
+        AIManager.GetInstance().TimeOfGame = timeAtStart;
     }
 
     // Update is called once per frame
@@ -216,8 +224,7 @@ public class PlayerStats : MonoBehaviour
     IEnumerator GameOver(float timeToWait)
     {
         Destroy(gameObject.GetComponent<PlayerMovement>());
-        source.clip = deathSound;
-        source.Play();
+        
         animator.SetBool("IsDying", true);
         GetComponent<Rigidbody2D>().MovePosition(transform.position);
         float timeAtStart = Time.time;
@@ -227,7 +234,7 @@ public class PlayerStats : MonoBehaviour
         {
             yield return null;
         }
-
+        SceneManager.LoadScene("GameOver");
     } 
     
     IEnumerator ResetLoveBar()
