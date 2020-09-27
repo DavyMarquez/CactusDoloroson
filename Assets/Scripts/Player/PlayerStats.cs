@@ -100,6 +100,13 @@ public class PlayerStats : MonoBehaviour
 
         loveBar.SetMax(100, love);
         sorrowBar.SetMax(100, sorrow);
+
+        AIManager.GetInstance().TimeOfGame = Time.time;
+        AIManager.GetInstance().HuggedPuppies = 0;
+        AIManager.GetInstance().HuggedSkunks = 0;
+        AIManager.GetInstance().HuggedTortoises = 0;
+        AIManager.GetInstance().PickedFlowers = timeAtStart;
+        AIManager.GetInstance().TimeOfGame = timeAtStart;
     }
 
     // Update is called once per frame
