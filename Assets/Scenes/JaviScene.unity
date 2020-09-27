@@ -22598,7 +22598,7 @@ MonoBehaviour:
   - {fileID: 3753050540618757044, guid: d2cbd8b18cf9ec54bb397c7e52ddf976, type: 3}
   puppyChance: 0.3
   tortoiseChance: 0.7
-  skunkChance: 0.511
+  skunkChance: 0.5
   bearChance: 0.05
   spawnAmount: 1
   timeBetweenSpawns: 12
