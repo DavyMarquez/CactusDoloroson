@@ -16,6 +16,8 @@ public class PlayerStats : MonoBehaviour
 
     public ParticleSystem stink;
 
+    [Min(0.0f)]
+    public float timeToResetLoveBar = 10.0f;
     private AIManager aiManager;
     public bool Smell
     {
@@ -120,6 +122,10 @@ public class PlayerStats : MonoBehaviour
         //love = Mathf.Min(amount + love, 100.0f);
         love = Mathf.Clamp(amount + love, 0.0f, 100.0f);
         loveBar.SetValue(love);
+        if(love >= 100.0f)
+        {
+            StartCoroutine(ResetLoveBar());
+        }
     }
 
     public void DecreaseLove(float amount)
@@ -185,6 +191,16 @@ public class PlayerStats : MonoBehaviour
             yield return null;
         }
         Debug.Log("Muerto");
+    } 
+    
+    IEnumerator ResetLoveBar()
+    {
+        float timeAtStart = Time.time;
+        while(timeToResetLoveBar > Time.time - timeAtStart)
+        {
+            yield return null;
+        }
+        love = 0.0f;
     }
 
     public void RemoveSmellInTime(float smellTimer)
