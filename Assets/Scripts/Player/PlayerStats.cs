@@ -227,7 +227,7 @@ public class PlayerStats : MonoBehaviour
         {
             yield return null;
         }
-        Debug.Log("Muerto");
+
     } 
     
     IEnumerator ResetLoveBar()
