@@ -22561,6 +22561,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4699038027893812278, guid: b68995abf8bfbd54b9a152a8ba9c4dfc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -19.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6769786448785964882, guid: b68995abf8bfbd54b9a152a8ba9c4dfc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -20.4
+      objectReference: {fileID: 0}
     - target: {fileID: 7134672987240611026, guid: b68995abf8bfbd54b9a152a8ba9c4dfc,
         type: 3}
       propertyPath: m_Value
@@ -27814,6 +27824,11 @@ PrefabInstance:
         type: 3}
       propertyPath: speedBuffPercentage
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194416770071536021, guid: 20b546085214b894aa9eed6672e44a20,
+        type: 3}
+      propertyPath: timeToIncreaseSorrow
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b546085214b894aa9eed6672e44a20, type: 3}
