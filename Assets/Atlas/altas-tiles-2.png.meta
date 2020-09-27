@@ -209,6 +209,9 @@ TextureImporter:
   - first:
       213: 1707057912053982600
     second: altas-tiles-2_68
+  - first:
+      213: -6942056052961891718
+    second: altas-tiles-2_69
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -1750,6 +1753,27 @@ TextureImporter:
       bones: []
       spriteID: 8856ffa6020b0b710800000000000000
       internalID: 1707057912053982600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: altas-tiles-2_69
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7a2b58ecccd8af90800000000000000
+      internalID: -6942056052961891718
       vertices: []
       indices: 
       edges: []
