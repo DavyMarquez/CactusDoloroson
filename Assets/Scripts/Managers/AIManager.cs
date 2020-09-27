@@ -84,7 +84,6 @@ public class AIManager
     public void IncreasePickedFlowers()
     {
         pickedFlowers++;
-        Debug.Log(pickedFlowers);
     }
 
     public int TotalHugs()

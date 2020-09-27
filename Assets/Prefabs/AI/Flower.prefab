@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flowerPickup: {fileID: 8300000, guid: fa93d9d1f0073464b88eda16e1cd6637, type: 3}
-  respawnTime: 30
+  respawnTime: 40
   timeToFlip: 3
 --- !u!114 &5087149697335310631
 MonoBehaviour:
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   love: 5
-  sorrow: -15
+  sorrow: -20
 --- !u!58 &7515039108342794949
 CircleCollider2D:
   m_ObjectHideFlags: 0

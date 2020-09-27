@@ -249,7 +249,7 @@ public class PuppyMovement : MonoBehaviour
             //Debug.DrawLine(leftHit.point, leftHit.point + wallAvoidance.normalized * 1.5f, Color.green);
         }
         
-        currentSpeed = currentSpeed + separationVector + wallAvoidance / 2.0f;
+        currentSpeed = currentSpeed + separationVector + wallAvoidance;
 
         steering = desiredSpeed - currentSpeed;
         currentSpeed += steering * Time.deltaTime;
