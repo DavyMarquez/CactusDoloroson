@@ -55,6 +55,7 @@ public class Flower : MonoBehaviour
             GetComponent<Collider2D>().enabled = false;
             GetComponent<Renderer>().enabled = false;
             AIManager.GetInstance().IncreasePickedFlowers();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TimeSinceLastInteractionReset();
         }
     }
 

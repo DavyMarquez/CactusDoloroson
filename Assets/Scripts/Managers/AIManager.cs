@@ -73,7 +73,7 @@ public class AIManager
     public void IncreaseHuggedBears()
     {
         huggedBears++;
-        Debug.Log(huggedBears);
+        //Debug.Log(huggedBears);
     }
 
     public void IncreasePickedFlowers()
