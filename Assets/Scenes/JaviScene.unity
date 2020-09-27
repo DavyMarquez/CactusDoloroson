@@ -172,10 +172,10 @@ MonoBehaviour:
   - {fileID: 3753050540618757044, guid: d2cbd8b18cf9ec54bb397c7e52ddf976, type: 3}
   puppyChance: 0.3
   tortoiseChance: 0.4
-  skunkChance: 0.4
+  skunkChance: 0.7
   bearChance: 0.1
   spawnAmount: 1
-  timeBetweenSpawns: 8
+  timeBetweenSpawns: 12
 --- !u!212 &335036147
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -343,11 +343,11 @@ MonoBehaviour:
   - {fileID: 6067005558311267609, guid: 8f88563ec92f1a441adb8139ded08fda, type: 3}
   - {fileID: 3753050540618757044, guid: d2cbd8b18cf9ec54bb397c7e52ddf976, type: 3}
   puppyChance: 0.3
-  tortoiseChance: 0.4
+  tortoiseChance: 0.7
   skunkChance: 0.4
   bearChance: 0.1
   spawnAmount: 1
-  timeBetweenSpawns: 8
+  timeBetweenSpawns: 12
 --- !u!212 &484326743
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2280,6 +2280,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dc230d060ae0574298cc40ee604ddac, type: 3}
+--- !u!114 &899056111 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9153621382129466125, guid: b68995abf8bfbd54b9a152a8ba9c4dfc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1477075199}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00dcfa295f71cce4c955a9d45872f81d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &907896279
 GameObject:
   m_ObjectHideFlags: 0
@@ -22394,6 +22406,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1460957855 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7191537216486991977, guid: b68995abf8bfbd54b9a152a8ba9c4dfc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1477075199}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00dcfa295f71cce4c955a9d45872f81d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1477075199
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22572,12 +22596,12 @@ MonoBehaviour:
   - {fileID: 6202632892900014196, guid: e4a8256236876f7459163aaf415303ec, type: 3}
   - {fileID: 6067005558311267609, guid: 8f88563ec92f1a441adb8139ded08fda, type: 3}
   - {fileID: 3753050540618757044, guid: d2cbd8b18cf9ec54bb397c7e52ddf976, type: 3}
-  puppyChance: 0.4
-  tortoiseChance: 0.4
+  puppyChance: 0.3
+  tortoiseChance: 0.7
   skunkChance: 0.511
   bearChance: 0.05
   spawnAmount: 1
-  timeBetweenSpawns: 6
+  timeBetweenSpawns: 12
 --- !u!212 &1510634075
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22677,12 +22701,12 @@ MonoBehaviour:
   - {fileID: 6202632892900014196, guid: e4a8256236876f7459163aaf415303ec, type: 3}
   - {fileID: 6067005558311267609, guid: 8f88563ec92f1a441adb8139ded08fda, type: 3}
   - {fileID: 3753050540618757044, guid: d2cbd8b18cf9ec54bb397c7e52ddf976, type: 3}
-  puppyChance: 0.4
+  puppyChance: 0.3
   tortoiseChance: 0.4
-  skunkChance: 0.4
+  skunkChance: 0.7
   bearChance: 0.1
   spawnAmount: 1
-  timeBetweenSpawns: 8
+  timeBetweenSpawns: 12
 --- !u!212 &1547423496
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27628,12 +27652,12 @@ PrefabInstance:
     - target: {fileID: 2034111204869622964, guid: 20b546085214b894aa9eed6672e44a20,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.95
+      value: -12.0146
       objectReference: {fileID: 0}
     - target: {fileID: 2034111204869622964, guid: 20b546085214b894aa9eed6672e44a20,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.53
+      value: 8.5291
       objectReference: {fileID: 0}
     - target: {fileID: 2034111204869622964, guid: 20b546085214b894aa9eed6672e44a20,
         type: 3}
@@ -27710,5 +27734,15 @@ PrefabInstance:
       propertyPath: sorrowClip
       value: 
       objectReference: {fileID: 8300000, guid: bf2f9a8b1e5523c4f8eb23e42b80b5ea, type: 3}
+    - target: {fileID: 9194416770071536021, guid: 20b546085214b894aa9eed6672e44a20,
+        type: 3}
+      propertyPath: loveBar
+      value: 
+      objectReference: {fileID: 1460957855}
+    - target: {fileID: 9194416770071536021, guid: 20b546085214b894aa9eed6672e44a20,
+        type: 3}
+      propertyPath: sorrowBar
+      value: 
+      objectReference: {fileID: 899056111}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b546085214b894aa9eed6672e44a20, type: 3}

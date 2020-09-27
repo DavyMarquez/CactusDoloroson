@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   area: 1.4
-  speed: 7
+  speed: 5
   detectionArea: 50
   wanderTime: 2
 --- !u!58 &5573422759254690462
