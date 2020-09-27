@@ -1,4 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 5367eb46f5dc64a43bde696b56255c03
+TextureImporter:
+  internalIDToNameTable: []
+=======
 guid: a5814474b1d186c42b0335ea8019fc1f
 TextureImporter:
   internalIDToNameTable:
@@ -20,6 +25,7 @@ TextureImporter:
   - first:
       213: -3806355950825535362
     second: start-menu_5
+>>>>>>> 9745d58469c355d0a6e0299502d56114df3fee9b
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -49,7 +55,11 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
+<<<<<<< HEAD
+    filterMode: -1
+=======
     filterMode: 0
+>>>>>>> 9745d58469c355d0a6e0299502d56114df3fee9b
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -58,7 +68,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
+<<<<<<< HEAD
+  spriteMode: 1
+=======
   spriteMode: 2
+>>>>>>> 9745d58469c355d0a6e0299502d56114df3fee9b
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -79,6 +93,12 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
+<<<<<<< HEAD
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+=======
     maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
@@ -107,6 +127,7 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
+>>>>>>> 9745d58469c355d0a6e0299502d56114df3fee9b
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -115,6 +136,9 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
+<<<<<<< HEAD
+    sprites: []
+=======
     sprites:
     - serializedVersion: 2
       name: start-menu_0
@@ -242,6 +266,7 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+>>>>>>> 9745d58469c355d0a6e0299502d56114df3fee9b
     outline: []
     physicsShape: []
     bones: []

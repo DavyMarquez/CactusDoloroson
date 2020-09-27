@@ -5055,6 +5055,7 @@ GameObject:
   - component: {fileID: 7838213901021860058}
   - component: {fileID: 9194416770071536015}
   - component: {fileID: 9194416770071536021}
+  - component: {fileID: 1028291868}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5144,7 +5145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buffSpeedMultiplayer: 3
-  speed: 20
+  speed: 15
 --- !u!95 &6922466667368955292
 Animator:
   serializedVersion: 3
@@ -5220,10 +5221,11 @@ MonoBehaviour:
   dashBuffedTime: 2
   dashSpeed: 15
   hugFailPenalitation: 5
-  transparencyWhileDashing: 0.047
-  reverseTransparencyAnimation: 0
+  transparencyWhileDashing: 0.773
+  reverseTransparencyAnimation: 1
   dust: {fileID: 1598076715}
   hugCoolDown: 1
+  otherClip: {fileID: 8300000, guid: d15ceb8833ed5d2418e1addf38b32f00, type: 3}
   invulnerable: 0
   hitWhileDashing: 0
   somethingHugged: 0
@@ -5241,6 +5243,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 985e8310e2838214c98c95a43eda63d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loveClip: {fileID: 8300000, guid: 4d51332a3523da1449491d2c2010e83c, type: 3}
+  sorrowClip: {fileID: 8300000, guid: 33a122f7df91b7e4d96c9eb9df91c13b, type: 3}
   loveBar: {fileID: 6910321145789812664, guid: 64372fecb71953b4d861ac388df796ba, type: 3}
   sorrowBar: {fileID: 6997271603321054582, guid: 5e403dcdca62fc049896bb0bbe481d55,
     type: 3}
@@ -5254,4 +5258,100 @@ MonoBehaviour:
   InLoveAnim: {fileID: 7118822241851651148}
   SmellyAnim: {fileID: 160574881872262451}
   sorrowIncreaseRate: 1
-  timeToIncreaseSorrow: 5
+  timeToIncreaseSorrow: 8
+--- !u!82 &1028291868
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9194416770071536012}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d15ceb8833ed5d2418e1addf38b32f00, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.79
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 142
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

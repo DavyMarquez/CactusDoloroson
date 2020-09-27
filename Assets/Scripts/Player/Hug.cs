@@ -42,6 +42,11 @@ public class Hug : MonoBehaviour
 
     private Animator animator;
 
+    //Audio
+    private AudioSource source;
+    public AudioClip otherClip;
+    //Fin del audio
+
     private bool dashing = false;
 
     public bool invulnerable = false;
@@ -62,6 +67,7 @@ public class Hug : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
         dashSpeed = dashDistance / dashTime;
         timeLastHug = hugCoolDown;
+        source = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -79,6 +85,9 @@ public class Hug : MonoBehaviour
     //Coroutine for the Hug animation
     IEnumerator OnHug()
     {
+        source.clip = otherClip;
+        source.Play();
+
         if (!somethingHugged){
             invulnerable = false;
             playerStats.IncreaseSorrow(hugFailPenalitation);
@@ -123,6 +132,8 @@ public class Hug : MonoBehaviour
         dashing = true;
         somethingHugged = false;
         float dashTimeAux = dashTime;
+        
+
         if (dashBuff)
         {
             playerMovement.Dashing(dashBuffedDistance / dashBuffedTime);
@@ -157,6 +168,7 @@ public class Hug : MonoBehaviour
 
             if (somethingHugged)
             {
+                
                 break;
             }
             yield return null;
