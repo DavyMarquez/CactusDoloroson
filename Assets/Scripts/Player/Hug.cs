@@ -184,6 +184,11 @@ public class Hug : MonoBehaviour
     {
         dashBuff = true;
     }
+    
+    public void RemoveDashBuff()
+    {
+        dashBuff = false;
+    }
 
     void PlayDust()
     {

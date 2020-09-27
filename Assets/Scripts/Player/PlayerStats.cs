@@ -118,11 +118,12 @@ public class PlayerStats : MonoBehaviour
             changedStinkStatus = true;
             SmellyAnim.GetComponent<Animator>().SetBool("IsSmelling", true);
         }
-        if(!smell && changedStinkStatus)
+        if (!smell && changedStinkStatus)
         {
             SmellyAnim.GetComponent<Animator>().SetBool("IsSmelling", false);
             changedStinkStatus = false;
         }
+        
         //GridAI.GetInstance().ShowGrid();
 
         UpdateNotifications();
@@ -137,7 +138,6 @@ public class PlayerStats : MonoBehaviour
                 source.Play();
             }
             sorrow = Mathf.Min(sorrow + sorrowIncreaseRate * Time.deltaTime, 100.0f);
-            sorrowBar.SetValue(sorrow);
             
             
         }
@@ -145,19 +145,20 @@ public class PlayerStats : MonoBehaviour
         {
             StartCoroutine(GameOver(deathTime));
         }
-
         Notify();
+        loveBar.SetValue(love);
+        sorrowBar.SetValue(sorrow);
     }
 
     public void IncreaseLove(float amount)
     {
-        //love = Mathf.Min(amount + love, 100.0f);
-        if(love >= 100.0f)
+        if(love >= 100)
         {
             return;
         }
+        //love = Mathf.Min(amount + love, 100.0f);
         love = Mathf.Clamp(amount + love, 0.0f, 100.0f);
-        loveBar.SetValue(love);
+        //loveBar.SetValue(love);
         if(love >= 100.0f)
         {
             StartCoroutine(ResetLoveBar());
@@ -168,21 +169,21 @@ public class PlayerStats : MonoBehaviour
     {
         //love = Mathf.Max(love - amount, 0.0f);
         love = Mathf.Clamp(love - amount, 0.0f, 100.0f);
-        loveBar.SetValue(love);
+        //loveBar.SetValue(love);
     }
 
     public void IncreaseSorrow(float amount)
     {
         //sorrow = Mathf.Min(amount + sorrow, 100.0f);
         sorrow = Mathf.Clamp(sorrow + amount, 0.0f, 100.0f);
-        sorrowBar.SetValue(sorrow);
+        //sorrowBar.SetValue(sorrow);
     }
 
     public void DecreaseSorrow(float amount)
     {
         //sorrow = Mathf.Max(sorrow - amount, 0.0f);
         sorrow = Mathf.Clamp(sorrow - amount, 0.0f, 100.0f);
-        sorrowBar.SetValue(sorrow);
+        //sorrowBar.SetValue(sorrow);
     }
 
     public void TimeSinceLastInteractionReset()
@@ -219,6 +220,16 @@ public class PlayerStats : MonoBehaviour
             source.clip = loveClip;
             source.Play();
         }
+        if (love < speedBuffPercentage)
+        {
+            gameObject.GetComponent<PlayerMovement>().RemoveSpeedBuff();
+
+        }
+        if (love < dashBuffPercentage)
+        {
+            gameObject.GetComponent<Hug>().RemoveDashBuff();
+
+        }
     }
 
     IEnumerator GameOver(float timeToWait)
@@ -247,7 +258,9 @@ public class PlayerStats : MonoBehaviour
         }
         love = 0.0f;
         InLoveAnim.GetComponent<Animator>().SetBool("IsInLove", false);
-    }
+        gameObject.GetComponent<PlayerMovement>().RemoveSpeedBuff();
+        gameObject.GetComponent<Hug>().RemoveDashBuff();
+}
 
     public void RemoveSmellInTime(float smellTimer)
     {

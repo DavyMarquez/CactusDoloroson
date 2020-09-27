@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -43,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
     {
         animator = gameObject.GetComponent<Animator>();
         isLookingRight = animator.GetBool("IsLookingRight");
+        speedBuff = false;
     }
 
     // Update is called once per frame
@@ -90,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
             currentSpeed = speed;
         }
 
-        GetComponent<Rigidbody2D>().MovePosition(currentPos + speed * direction * Time.deltaTime);
+        GetComponent<Rigidbody2D>().MovePosition(currentPos + currentSpeed * direction * Time.deltaTime);
     }
 
     public void ApplySpeedBuff()
