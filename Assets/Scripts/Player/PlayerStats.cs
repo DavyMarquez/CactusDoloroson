@@ -14,8 +14,6 @@ public class PlayerStats : MonoBehaviour
 
     public GenericBar sorrowBar;
 
-    public ParticleSystem stink;
-
     [Min(0.0f)]
     public float timeToResetLoveBar = 10.0f;
     private AIManager aiManager;
@@ -56,6 +54,13 @@ public class PlayerStats : MonoBehaviour
     [SerializeField]
     private bool gameOver = true;
 
+    [SerializeField]
+    private float deathTime = 3.0f;
+
+    public GameObject InLoveAnim;
+
+    public GameObject SmellyAnim;
+
     // sorrow decreased by seconds
     [Range(0.0f, 100.0f)]
     public float sorrowIncreaseRate = 1.0f;
@@ -94,11 +99,11 @@ public class PlayerStats : MonoBehaviour
         if(smell && !changedStinkStatus)
         {
             changedStinkStatus = true;
-            stink.Play();
+            SmellyAnim.GetComponent<Animator>().SetBool("IsSmelling", true);
         }
         if(!smell && changedStinkStatus)
         {
-            stink.Stop();
+            SmellyAnim.GetComponent<Animator>().SetBool("IsSmelling", false);
             changedStinkStatus = false;
         }
         //GridAI.GetInstance().ShowGrid();
@@ -118,7 +123,7 @@ public class PlayerStats : MonoBehaviour
         }
         if (sorrow >= 100.0f && !animator.GetBool("IsDying") && gameOver)
         {
-            StartCoroutine(GameOver());
+            StartCoroutine(GameOver(deathTime));
         }
 
         Notify();
@@ -192,7 +197,7 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    IEnumerator GameOver()
+    IEnumerator GameOver(float timeToWait)
     {
         Destroy(gameObject.GetComponent<PlayerMovement>());
         animator.SetBool("IsDying", true);
@@ -200,7 +205,7 @@ public class PlayerStats : MonoBehaviour
         float timeAtStart = Time.time;
         AIManager.GetInstance().TimeOfGame = timeAtStart;
         Debug.Log(AIManager.GetInstance().TimeOfGame);
-        while(3 > Time.time - timeAtStart)
+        while(timeToWait > Time.time - timeAtStart)
         {
             yield return null;
         }
@@ -209,12 +214,14 @@ public class PlayerStats : MonoBehaviour
     
     IEnumerator ResetLoveBar()
     {
+        InLoveAnim.GetComponent<Animator>().SetBool("IsInLove", true);
         float timeAtStart = Time.time;
         while(timeToResetLoveBar > Time.time - timeAtStart)
         {
             yield return null;
         }
         love = 0.0f;
+        InLoveAnim.GetComponent<Animator>().SetBool("IsInLove", false);
     }
 
     public void RemoveSmellInTime(float smellTimer)

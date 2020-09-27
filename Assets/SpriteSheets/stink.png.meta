@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 5367eb46f5dc64a43bde696b56255c03
-TextureImporter:
-  internalIDToNameTable: []
-=======
-guid: a5814474b1d186c42b0335ea8019fc1f
+guid: a86da25a4e1b0b94d9fbdb82bd5d0aa2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 893595661430997799
-    second: start-menu_0
+      213: -4828593732087289245
+    second: stink_0
   - first:
-      213: -1548245435363757816
-    second: start-menu_1
+      213: -7683531373736810046
+    second: stink_1
   - first:
-      213: -3580649040562994186
-    second: start-menu_2
+      213: -2205218579350092113
+    second: stink_2
   - first:
-      213: -3362704321244193462
-    second: start-menu_3
+      213: -6238686607838158829
+    second: stink_3
   - first:
-      213: 1387559786233826413
-    second: start-menu_4
+      213: -370919748669058403
+    second: stink_4
   - first:
-      213: -3806355950825535362
-    second: start-menu_5
->>>>>>> 9745d58469c355d0a6e0299502d56114df3fee9b
+      213: -7419971161202204048
+    second: stink_5
+  - first:
+      213: 8652948235937217847
+    second: stink_6
+  - first:
+      213: 3560018363028062443
+    second: stink_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -55,11 +55,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-<<<<<<< HEAD
-    filterMode: -1
-=======
     filterMode: 0
->>>>>>> 9745d58469c355d0a6e0299502d56114df3fee9b
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -68,16 +64,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-<<<<<<< HEAD
-  spriteMode: 1
-=======
   spriteMode: 2
->>>>>>> 9745d58469c355d0a6e0299502d56114df3fee9b
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -93,13 +85,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-<<<<<<< HEAD
     maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-=======
-    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -111,7 +97,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -122,12 +108,23 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 4096
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
->>>>>>> 9745d58469c355d0a6e0299502d56114df3fee9b
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -136,18 +133,15 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-<<<<<<< HEAD
-    sprites: []
-=======
     sprites:
     - serializedVersion: 2
-      name: start-menu_0
+      name: stink_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1280
-        height: 720
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,20 +149,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 723cc640580b66c00800000000000000
-      internalID: 893595661430997799
+      spriteID: 36a624a65936dfcb0800000000000000
+      internalID: -4828593732087289245
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: start-menu_1
+      name: stink_1
       rect:
         serializedVersion: 2
-        x: 1280
+        x: 64
         y: 0
-        width: 1280
-        height: 720
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,20 +170,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 801f500caf6838ae0800000000000000
-      internalID: -1548245435363757816
+      spriteID: 2c929d7bcec9e5590800000000000000
+      internalID: -7683531373736810046
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: start-menu_2
+      name: stink_2
       rect:
         serializedVersion: 2
-        x: 2560
+        x: 128
         y: 0
-        width: 1280
-        height: 720
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,20 +191,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f346ef2baafe4ec0800000000000000
-      internalID: -3580649040562994186
+      spriteID: fa60fb5c26d7561e0800000000000000
+      internalID: -2205218579350092113
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: start-menu_3
+      name: stink_3
       rect:
         serializedVersion: 2
-        x: 3840
+        x: 192
         y: 0
-        width: 1280
-        height: 720
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,55 +212,12 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4d91977c364551d0800000000000000
-      internalID: -3362704321244193462
+      spriteID: 310e1da859bbb69a0800000000000000
+      internalID: -6238686607838158829
       vertices: []
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: start-menu_4
-      rect:
-        serializedVersion: 2
-        x: 5120
-        y: 0
-        width: 1280
-        height: 720
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d6c8513264a914310800000000000000
-      internalID: 1387559786233826413
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: start-menu_5
-      rect:
-        serializedVersion: 2
-        x: 6400
-        y: 0
-        width: 1280
-        height: 720
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e78895efd6b1d2bc0800000000000000
-      internalID: -3806355950825535362
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
->>>>>>> 9745d58469c355d0a6e0299502d56114df3fee9b
     outline: []
     physicsShape: []
     bones: []
