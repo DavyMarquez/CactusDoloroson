@@ -216,8 +216,7 @@ public class PlayerStats : MonoBehaviour
     IEnumerator GameOver(float timeToWait)
     {
         Destroy(gameObject.GetComponent<PlayerMovement>());
-        source.clip = deathSound;
-        source.Play();
+        
         animator.SetBool("IsDying", true);
         GetComponent<Rigidbody2D>().MovePosition(transform.position);
         float timeAtStart = Time.time;

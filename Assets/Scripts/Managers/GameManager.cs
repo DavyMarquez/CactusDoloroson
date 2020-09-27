@@ -7,11 +7,21 @@ public class GameManager : MonoBehaviour
 
     public GameObject player;
 
+    public AudioClip bgm;
+    public AudioClip deathSound;
+
+    private AudioSource source;
+
+
     private bool notifiedDead = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        source = gameObject.GetComponent<AudioSource>();
+        source.clip = bgm;
+        source.Play();
+        source.loop = true;
         // play music start here?
         notifiedDead = false;
     }
@@ -33,6 +43,9 @@ public class GameManager : MonoBehaviour
         Debug.Log("muerte");
         notifiedDead = true;
         // play death music
+        source.clip = deathSound;
+        source.Play();
+        source.loop = false;
     }
 
 }
