@@ -11,30 +11,35 @@ public class AIManager
     public int HuggedPuppies
     {
         get { return huggedPuppies; }
+        set { huggedPuppies = value; }
     }
 
     private int huggedSkunks = 0;
     public int HuggedSkunks
     {
         get { return huggedSkunks; }
+        set { huggedSkunks = value; }
     }
 
     private int huggedTortoises = 0;
     public int HuggedTortoises
     {
         get { return huggedTortoises; }
+        set { huggedTortoises = value; }
     }
 
     private int huggedBears = 0;
     public int HuggedBears
     {
         get { return huggedBears; }
+        set { huggedBears = value; }
     }
 
     private int pickedFlowers = 0;
     public int PickedFlowers
     {
         get { return pickedFlowers; }
+        set { pickedFlowers = value; }
     }
 
     private float timeOfGame = 0.0f;
