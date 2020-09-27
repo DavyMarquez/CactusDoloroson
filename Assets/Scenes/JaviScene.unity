@@ -7101,18 +7101,6 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
---- !u!114 &1240946282 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9153621382129466125, guid: b68995abf8bfbd54b9a152a8ba9c4dfc,
-    type: 3}
-  m_PrefabInstance: {fileID: 1477075199}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00dcfa295f71cce4c955a9d45872f81d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1316797492
 GameObject:
   m_ObjectHideFlags: 0
@@ -22430,18 +22418,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1460957855 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7191537216486991977, guid: b68995abf8bfbd54b9a152a8ba9c4dfc,
-    type: 3}
-  m_PrefabInstance: {fileID: 1477075199}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00dcfa295f71cce4c955a9d45872f81d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1477075199
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27812,7 +27788,7 @@ PrefabInstance:
         type: 3}
       propertyPath: loveBar
       value: 
-      objectReference: {fileID: 1460957855}
+      objectReference: {fileID: 1038546670}
     - target: {fileID: 9194416770071536021, guid: 20b546085214b894aa9eed6672e44a20,
         type: 3}
       propertyPath: sorrowBar
