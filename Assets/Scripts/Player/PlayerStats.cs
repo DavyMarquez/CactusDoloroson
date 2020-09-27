@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.SymbolStore;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -223,8 +224,7 @@ public class PlayerStats : MonoBehaviour
     IEnumerator GameOver(float timeToWait)
     {
         Destroy(gameObject.GetComponent<PlayerMovement>());
-        source.clip = deathSound;
-        source.Play();
+        
         animator.SetBool("IsDying", true);
         GetComponent<Rigidbody2D>().MovePosition(transform.position);
         float timeAtStart = Time.time;
@@ -234,7 +234,7 @@ public class PlayerStats : MonoBehaviour
         {
             yield return null;
         }
-        Debug.Log("Muerto");
+        SceneManager.LoadScene("GameOver");
     } 
     
     IEnumerator ResetLoveBar()

@@ -7,6 +7,9 @@ public class Flower : MonoBehaviour
 
     private Collider2D col;
 
+    private AudioSource source;
+    public AudioClip flowerPickup;
+
     private bool picked = false;
 
     [Min(0.0f)]
@@ -23,6 +26,7 @@ public class Flower : MonoBehaviour
     void Start()
     {
         timeSincePicked = 0.0f;
+        source = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -56,6 +60,8 @@ public class Flower : MonoBehaviour
             GetComponent<Renderer>().enabled = false;
             AIManager.GetInstance().IncreasePickedFlowers();
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TimeSinceLastInteractionReset();
+            source.clip = flowerPickup;
+            source.Play();
         }
     }
 

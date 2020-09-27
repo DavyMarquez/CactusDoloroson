@@ -7,6 +7,7 @@ public class AIManager
     private static AIManager instance = null;
 
     private int huggedPuppies = 0;
+
     public int HuggedPuppies
     {
         get { return huggedPuppies; }
@@ -81,4 +82,5 @@ public class AIManager
         pickedFlowers++;
         Debug.Log(pickedFlowers);
     }
+
 }
