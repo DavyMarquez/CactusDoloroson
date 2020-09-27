@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.SymbolStore;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -227,7 +228,7 @@ public class PlayerStats : MonoBehaviour
         {
             yield return null;
         }
-
+        SceneManager.LoadScene("GameOver");
     } 
     
     IEnumerator ResetLoveBar()
