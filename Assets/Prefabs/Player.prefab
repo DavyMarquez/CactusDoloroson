@@ -4780,8 +4780,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160574881872262451}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.3, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2034111204869622964}
   m_RootOrder: 3
@@ -4964,8 +4964,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7118822241851651148}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.3, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2034111204869622964}
   m_RootOrder: 2
@@ -5245,6 +5245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loveClip: {fileID: 8300000, guid: 4d51332a3523da1449491d2c2010e83c, type: 3}
   sorrowClip: {fileID: 8300000, guid: 33a122f7df91b7e4d96c9eb9df91c13b, type: 3}
+  deathSound: {fileID: 0}
   loveBar: {fileID: 6910321145789812664, guid: 64372fecb71953b4d861ac388df796ba, type: 3}
   sorrowBar: {fileID: 6997271603321054582, guid: 5e403dcdca62fc049896bb0bbe481d55,
     type: 3}
