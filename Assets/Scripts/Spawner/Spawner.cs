@@ -56,18 +56,22 @@ public class Spawner : MonoBehaviour
                 if (rand < bearChance)
                 {
                     Instantiate(enemyTypes[3], transform.position, Quaternion.identity);
+                    continue;
                 }
-                else if (rand < skunkChance)
+                if (rand < skunkChance)
                 {
                     Instantiate(enemyTypes[2], transform.position, Quaternion.identity);
+                    continue;
                 }
-                else if (rand < tortoiseChance)
+                if (rand < tortoiseChance)
                 {
                     Instantiate(enemyTypes[1], transform.position, Quaternion.identity);
+                    continue;
                 }
-                else
+                if (rand < puppyChance)
                 {
                     Instantiate(enemyTypes[0], transform.position, Quaternion.identity);
+                    continue;
                 }
 
             }
