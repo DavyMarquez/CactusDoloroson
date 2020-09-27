@@ -7,7 +7,6 @@ public class AIManager
     private static AIManager instance = null;
 
     private int huggedPuppies = 0;
-
     public int HuggedPuppies
     {
         get { return huggedPuppies; }
@@ -88,4 +87,26 @@ public class AIManager
         Debug.Log(pickedFlowers);
     }
 
+    public int TotalHugs()
+    {
+        return huggedPuppies + huggedBears + huggedSkunks + huggedTortoises;
+    }
+
+    public string FormatTime()
+    {
+        string time = "";
+        if (timeOfGame >= 3600)
+        {
+            time = (timeOfGame / 3600) + "h ";
+            timeOfGame %= 3600;
+        }
+        if (timeOfGame >= 60)
+        {
+            time = (timeOfGame / 60) + "m ";
+            timeOfGame %= 60;
+        }
+        time = timeOfGame.ToString("0") + "s";
+
+        return time;
+    }
 }

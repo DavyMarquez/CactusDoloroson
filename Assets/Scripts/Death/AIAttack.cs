@@ -102,4 +102,58 @@ public class AIAttack : MonoBehaviour
             }
         }
     }
+
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision && collision.gameObject.tag == "Player")
+        {
+            playerStats = collision.gameObject.GetComponent<PlayerStats>();
+            if (collision.gameObject.GetComponent<Hug>().invulnerable)
+            {
+                if (!collision.gameObject.GetComponent<Hug>().somethingHugged)
+                {
+                    collision.gameObject.GetComponent<Hug>().somethingHugged = true;
+                    if (playerStats != null)
+                    {
+                        playerStats.IncreaseLove(aiStats.Love);
+                        playerStats.IncreaseSorrow(aiStats.Sorrow);
+                        playerStats.TimeSinceLastInteractionReset();
+                        SkunkMovement skunk = gameObject.GetComponent<SkunkMovement>();
+                        if (skunk != null)
+                        {
+                            playerStats.setAvoidingPlayer(true);
+                            playerStats.RemoveSmellInTime(smellTimer);
+                        }
+
+                        deadByHug = true;
+                        animator.SetBool("IsDead", true);
+                        source.Play();
+                    }
+                }
+            }
+            else
+            {
+                if (gameObject.GetComponent<BearMovement>() != null)
+                {
+                    playerStats.IncreaseLove(aiStats.Love);
+                }
+                else
+                {
+                    playerStats.IncreaseSorrow(aiStats.Sorrow);
+                }
+                playerStats.TimeSinceLastInteractionReset();
+                animator.SetBool("IsDead", true);
+                source.Play();
+            }
+            Collider2D[] collisionArray = gameObject.GetComponents<Collider2D>();
+            foreach (Collider2D c in collisionArray)
+            {
+                if (!c.isTrigger)
+                {
+                    Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), c, false);
+                    GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+                }
+            }
+        }
+    }
 }
