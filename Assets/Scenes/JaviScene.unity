@@ -170,12 +170,12 @@ MonoBehaviour:
   - {fileID: 6202632892900014196, guid: e4a8256236876f7459163aaf415303ec, type: 3}
   - {fileID: 6067005558311267609, guid: 8f88563ec92f1a441adb8139ded08fda, type: 3}
   - {fileID: 3753050540618757044, guid: d2cbd8b18cf9ec54bb397c7e52ddf976, type: 3}
-  puppyChance: 0.3
-  tortoiseChance: 0.7
-  skunkChance: 0.4
-  bearChance: 0.1
+  puppyChance: 0.35
+  tortoiseChance: 0.691
+  skunkChance: 0.45
+  bearChance: 0.09
   spawnAmount: 1
-  timeBetweenSpawns: 12
+  timeBetweenSpawns: 10
 --- !u!212 &335036147
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -342,12 +342,12 @@ MonoBehaviour:
   - {fileID: 6202632892900014196, guid: e4a8256236876f7459163aaf415303ec, type: 3}
   - {fileID: 6067005558311267609, guid: 8f88563ec92f1a441adb8139ded08fda, type: 3}
   - {fileID: 3753050540618757044, guid: d2cbd8b18cf9ec54bb397c7e52ddf976, type: 3}
-  puppyChance: 0.3
-  tortoiseChance: 0.7
-  skunkChance: 0.4
+  puppyChance: 0.8
+  tortoiseChance: 0.71
+  skunkChance: 0.46
   bearChance: 0.1
   spawnAmount: 1
-  timeBetweenSpawns: 12
+  timeBetweenSpawns: 10
 --- !u!212 &484326743
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22662,9 +22662,9 @@ MonoBehaviour:
   - {fileID: 6202632892900014196, guid: e4a8256236876f7459163aaf415303ec, type: 3}
   - {fileID: 6067005558311267609, guid: 8f88563ec92f1a441adb8139ded08fda, type: 3}
   - {fileID: 3753050540618757044, guid: d2cbd8b18cf9ec54bb397c7e52ddf976, type: 3}
-  puppyChance: 0.3
-  tortoiseChance: 0.4
-  skunkChance: 0.7
+  puppyChance: 0.45
+  tortoiseChance: 0.587
+  skunkChance: 0.76
   bearChance: 0.05
   spawnAmount: 1
   timeBetweenSpawns: 12
@@ -22767,10 +22767,10 @@ MonoBehaviour:
   - {fileID: 6202632892900014196, guid: e4a8256236876f7459163aaf415303ec, type: 3}
   - {fileID: 6067005558311267609, guid: 8f88563ec92f1a441adb8139ded08fda, type: 3}
   - {fileID: 3753050540618757044, guid: d2cbd8b18cf9ec54bb397c7e52ddf976, type: 3}
-  puppyChance: 0.3
-  tortoiseChance: 0.4
-  skunkChance: 0.7
-  bearChance: 0.1
+  puppyChance: 0.38
+  tortoiseChance: 0.47
+  skunkChance: 0.772
+  bearChance: 0.08
   spawnAmount: 1
   timeBetweenSpawns: 12
 --- !u!212 &1547423496
@@ -27829,6 +27829,11 @@ PrefabInstance:
         type: 3}
       propertyPath: timeToIncreaseSorrow
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194416770071536021, guid: 20b546085214b894aa9eed6672e44a20,
+        type: 3}
+      propertyPath: sorrowIncreaseRate
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b546085214b894aa9eed6672e44a20, type: 3}
