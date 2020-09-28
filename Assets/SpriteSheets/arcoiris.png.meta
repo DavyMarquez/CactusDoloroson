@@ -1,97 +1,31 @@
 fileFormatVersion: 2
-guid: f483f34af973e65458203f885aabe9de
+guid: d3b34e01324fb714facc774143257293
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -196966381547761709
-    second: happy-flower_0
+      213: -610223593134949424
+    second: arcoiris_0
   - first:
-      213: 5805236247248980456
-    second: happy-flower_1
+      213: -7075456030449708877
+    second: arcoiris_1
   - first:
-      213: 2401745356631178709
-    second: happy-flower_2
+      213: 916933990793959392
+    second: arcoiris_2
   - first:
-      213: -7288179196106799670
-    second: happy-flower_3
+      213: -2504032764659241611
+    second: arcoiris_3
   - first:
-      213: 6066100573690743370
-    second: happy-flower_4
+      213: 4691985524990154906
+    second: arcoiris_4
   - first:
-      213: 1469008920587696000
-    second: happy-flower_5
+      213: 4056246236464020948
+    second: arcoiris_5
   - first:
-      213: 7539549345910972033
-    second: happy-flower_6
+      213: 8802341986644638682
+    second: arcoiris_6
   - first:
-      213: 1285343884474401139
-    second: happy-flower_7
-  - first:
-      213: -3702984232246724384
-    second: happy-flower_8
-  - first:
-      213: -2844573426353101984
-    second: happy-flower_9
-  - first:
-      213: -609340466630563118
-    second: happy-flower_10
-  - first:
-      213: 1965593876210250780
-    second: happy-flower_11
-  - first:
-      213: 2393474906183848177
-    second: happy-flower_12
-  - first:
-      213: -2484705206465646448
-    second: happy-flower_13
-  - first:
-      213: -52960183528365901
-    second: happy-flower_14
-  - first:
-      213: 5291040164614900179
-    second: happy-flower_15
-  - first:
-      213: 4460823569790172384
-    second: happy-flower_16
-  - first:
-      213: -273446935164359204
-    second: happy-flower_17
-  - first:
-      213: -225063639327641000
-    second: happy-flower_18
-  - first:
-      213: -8799508110733020083
-    second: happy-flower_19
-  - first:
-      213: -7219863579053367916
-    second: happy-flower_20
-  - first:
-      213: 5124672828813605403
-    second: happy-flower_21
-  - first:
-      213: 7581315658800562784
-    second: happy-flower_22
-  - first:
-      213: 1167662574809287311
-    second: happy-flower_23
-  - first:
-      213: 2652282749516735366
-    second: happy-flower_0
-  - first:
-      213: 3585159703555987060
-    second: happy-flower_1
-  - first:
-      213: -8677269365599644726
-    second: happy-flower_2
-  - first:
-      213: 8925830367966424120
-    second: happy-flower_3
-  - first:
-      213: -4865854093398209866
-    second: happy-flower_4
-  - first:
-      213: 8455596543933053567
-    second: happy-flower_5
+      213: 206685247327748057
+    second: arcoiris_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -151,7 +85,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -163,7 +97,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -174,20 +108,8 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
+    buildTarget: Android
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -201,12 +123,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: happy-flower_0
+      name: arcoiris_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -215,40 +137,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68367d8bb1dcec420800000000000000
-      internalID: 2652282749516735366
+      spriteID: 0dbf0a900ec0887f0800000000000000
+      internalID: -610223593134949424
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: happy-flower_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 476df7161cb01c130800000000000000
-      internalID: 3585159703555987060
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: happy-flower_2
+      name: arcoiris_1
       rect:
         serializedVersion: 2
         x: 128
         y: 0
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -257,40 +158,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac3dd037c75249780800000000000000
-      internalID: -8677269365599644726
+      spriteID: 3b056294a3eeecd90800000000000000
+      internalID: -7075456030449708877
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: happy-flower_3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 83c6808bd6beedb70800000000000000
-      internalID: 8925830367966424120
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: happy-flower_4
+      name: arcoiris_2
       rect:
         serializedVersion: 2
         x: 256
         y: 0
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -299,19 +179,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ba8e128b73097cb0800000000000000
-      internalID: -4865854093398209866
+      spriteID: 0e751c34b9a99bc00800000000000000
+      internalID: 916933990793959392
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: happy-flower_5
+      name: arcoiris_3
       rect:
         serializedVersion: 2
-        x: 320
+        x: 384
         y: 0
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -320,8 +200,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7a762dc140585570800000000000000
-      internalID: 8455596543933053567
+      spriteID: 57deb8ca773ef3dd0800000000000000
+      internalID: -2504032764659241611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arcoiris_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a98105cc9f74d1140800000000000000
+      internalID: 4691985524990154906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arcoiris_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ddf3fd067eaa4830800000000000000
+      internalID: 4056246236464020948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arcoiris_6
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adbb5796663382a70800000000000000
+      internalID: 8802341986644638682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arcoiris_7
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dfb84b232b4ed200800000000000000
+      internalID: 206685247327748057
       vertices: []
       indices: 
       edges: []

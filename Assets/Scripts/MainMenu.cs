@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-public void PlayGame()
+public void Tutorial()
     {
-        SceneManager.LoadScene("JaviScene");
+        SceneManager.LoadScene("Tutorial01");
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         //SceneManager.GetActiveScene().buildIndex;
     }
@@ -25,5 +25,20 @@ public void PlayGame()
     public void BackToMenu()
     {
         SceneManager.LoadScene("StartMenu");
+    }
+
+    public void Next()
+    {
+        SceneManager.LoadScene("Tutorial02");
+    }
+
+    public void Previous()
+    {
+        SceneManager.LoadScene("Tutorial01");
+    }
+
+    public void PlayGame()
+    {
+        SceneManager.LoadScene("JaviScene");
     }
 }
