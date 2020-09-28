@@ -28147,10 +28147,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7389199981828556466, guid: 20b546085214b894aa9eed6672e44a20,
+        type: 3}
+      propertyPath: speed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389199981828556466, guid: 20b546085214b894aa9eed6672e44a20,
+        type: 3}
+      propertyPath: buffSpeedMultiplayer
+      value: 1.8
+      objectReference: {fileID: 0}
     - target: {fileID: 9194416770071536012, guid: 20b546085214b894aa9eed6672e44a20,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194416770071536015, guid: 20b546085214b894aa9eed6672e44a20,
+        type: 3}
+      propertyPath: dashDistance
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194416770071536015, guid: 20b546085214b894aa9eed6672e44a20,
+        type: 3}
+      propertyPath: dashTime
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194416770071536015, guid: 20b546085214b894aa9eed6672e44a20,
+        type: 3}
+      propertyPath: dashBuffedDistance
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 9194416770071536021, guid: 20b546085214b894aa9eed6672e44a20,
         type: 3}
@@ -28162,5 +28187,10 @@ PrefabInstance:
       propertyPath: sorrowBar
       value: 
       objectReference: {fileID: 753756646}
+    - target: {fileID: 9194416770071536021, guid: 20b546085214b894aa9eed6672e44a20,
+        type: 3}
+      propertyPath: love
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b546085214b894aa9eed6672e44a20, type: 3}
