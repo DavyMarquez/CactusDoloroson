@@ -135,6 +135,7 @@ public class PlayerStats : MonoBehaviour
             {
                 startedToIncreaseSorrow = true;
                 source.clip = sorrowClip;
+                source.loop = true;
                 source.Play();
             }
             sorrow = Mathf.Min(sorrow + sorrowIncreaseRate * Time.deltaTime, 100.0f);
@@ -190,6 +191,8 @@ public class PlayerStats : MonoBehaviour
     {
         timeSinceLastInteraction = 0.0f;
         startedToIncreaseSorrow = false;
+        source.loop = false;
+        source.Stop();
     }
 
     void UpdateNotifications()

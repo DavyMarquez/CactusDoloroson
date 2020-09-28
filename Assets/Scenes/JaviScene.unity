@@ -277,7 +277,7 @@ MonoBehaviour:
   skunkChance: 0.45
   bearChance: 0.09
   spawnAmount: 1
-  timeBetweenSpawns: 9
+  timeBetweenSpawns: 8
 --- !u!212 &335036147
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -449,7 +449,7 @@ MonoBehaviour:
   skunkChance: 0.46
   bearChance: 0.1
   spawnAmount: 1
-  timeBetweenSpawns: 10
+  timeBetweenSpawns: 9
 --- !u!212 &484326743
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22157,15 +22157,6 @@ Tilemap:
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       m_AllTileFlags: 1073741825
-  - first: {x: -11, y: -1, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 40
-      m_TileSpriteIndex: 40
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      m_AllTileFlags: 1073741825
   - first: {x: 6, y: -1, z: 0}
     second:
       serializedVersion: 2
@@ -22518,7 +22509,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 6
+  - m_RefCount: 5
     m_Data: {fileID: 11400000, guid: 9bfc4da20741d1641a3eb925fd045908, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -22622,7 +22613,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 6
+  - m_RefCount: 5
     m_Data: {fileID: -3623011111509347998, guid: 6785207d9a0146b469c4cc1360f849be,
       type: 3}
   - m_RefCount: 0
@@ -22649,7 +22640,7 @@ Tilemap:
     m_Data: {fileID: 1983416929520203709, guid: 6785207d9a0146b469c4cc1360f849be,
       type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 40
+  - m_RefCount: 39
     m_Data:
       e00: 1
       e01: 0
@@ -22668,7 +22659,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 40
+  - m_RefCount: 39
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -22900,7 +22891,7 @@ MonoBehaviour:
   skunkChance: 0.42
   bearChance: 0.05
   spawnAmount: 1
-  timeBetweenSpawns: 12
+  timeBetweenSpawns: 11
 --- !u!212 &1510634075
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23005,7 +22996,7 @@ MonoBehaviour:
   skunkChance: 0.336
   bearChance: 0.08
   spawnAmount: 1
-  timeBetweenSpawns: 10
+  timeBetweenSpawns: 8
 --- !u!212 &1547423496
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27417,7 +27408,22 @@ PrefabInstance:
     - target: {fileID: 9194416770071536015, guid: 20b546085214b894aa9eed6672e44a20,
         type: 3}
       propertyPath: dashBuffedDistance
-      value: 40
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194416770071536015, guid: 20b546085214b894aa9eed6672e44a20,
+        type: 3}
+      propertyPath: dashBuffedTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194416770071536015, guid: 20b546085214b894aa9eed6672e44a20,
+        type: 3}
+      propertyPath: dashDistance
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194416770071536015, guid: 20b546085214b894aa9eed6672e44a20,
+        type: 3}
+      propertyPath: dashTime
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 9194416770071536021, guid: 20b546085214b894aa9eed6672e44a20,
         type: 3}
@@ -27458,6 +27464,11 @@ PrefabInstance:
         type: 3}
       propertyPath: sorrowIncreaseRate
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194416770071536021, guid: 20b546085214b894aa9eed6672e44a20,
+        type: 3}
+      propertyPath: love
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20b546085214b894aa9eed6672e44a20, type: 3}
