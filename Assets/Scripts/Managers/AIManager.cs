@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class AIManager
@@ -96,15 +97,15 @@ public class AIManager
         string time = "";
         if (timeOfGame >= 3600)
         {
-            time = (timeOfGame / 3600) + "h ";
+            time += (Math.Truncate(timeOfGame) / 3600).ToString("0") + "h ";
             timeOfGame %= 3600;
         }
         if (timeOfGame >= 60)
         {
-            time = (timeOfGame / 60) + "m ";
+            time += (Math.Truncate(timeOfGame) / 60).ToString("0") + "m ";
             timeOfGame %= 60;
         }
-        time = timeOfGame.ToString("0") + "s";
+        time += Math.Truncate(timeOfGame).ToString("0") + "s";
 
         return time;
     }
