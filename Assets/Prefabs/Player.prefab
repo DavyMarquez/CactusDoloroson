@@ -5144,8 +5144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9967d7478b35b9d4d9152fd9ec5ba8f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffSpeedMultiplayer: 3
-  speed: 15
+  buffSpeedMultiplayer: 2.2
+  speed: 16
 --- !u!95 &6922466667368955292
 Animator:
   serializedVersion: 3
@@ -5216,16 +5216,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   huggingTime: 0.8
   dashDistance: 15
-  dashTime: 1
-  dashBuffedDistance: 40
-  dashBuffedTime: 2
+  dashTime: 0.7
+  dashBuffedDistance: 35
+  dashBuffedTime: 1
   dashSpeed: 15
   hugFailPenalitation: 5
   transparencyWhileDashing: 0.773
   reverseTransparencyAnimation: 1
   dust: {fileID: 1598076715}
   hugCoolDown: 1
-  otherClip: {fileID: 8300000, guid: d15ceb8833ed5d2418e1addf38b32f00, type: 3}
+  otherClip: {fileID: 8300000, guid: 997a320df762b9a4fa11ab4c2e7c7a04, type: 3}
   invulnerable: 0
   hitWhileDashing: 0
   somethingHugged: 0
@@ -5244,21 +5244,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loveClip: {fileID: 8300000, guid: 4d51332a3523da1449491d2c2010e83c, type: 3}
-  sorrowClip: {fileID: 8300000, guid: 33a122f7df91b7e4d96c9eb9df91c13b, type: 3}
-  deathSound: {fileID: 0}
-  loveBar: {fileID: 6910321145789812664, guid: 64372fecb71953b4d861ac388df796ba, type: 3}
-  sorrowBar: {fileID: 6997271603321054582, guid: 5e403dcdca62fc049896bb0bbe481d55,
-    type: 3}
+  sorrowClip: {fileID: 8300000, guid: bf2f9a8b1e5523c4f8eb23e42b80b5ea, type: 3}
+  deathSound: {fileID: 8300000, guid: 06f7dc52ca1415744a7b858220a9587c, type: 3}
+  loveBar: {fileID: 0}
+  sorrowBar: {fileID: 0}
   timeToResetLoveBar: 10
-  speedBuffPercentage: 50
+  speedBuffPercentage: 60
   dashBuffPercentage: 100
-  love: 100
+  love: 0
   sorrow: 0
-  gameOver: 0
+  gameOver: 1
   deathTime: 3
   InLoveAnim: {fileID: 7118822241851651148}
   SmellyAnim: {fileID: 160574881872262451}
-  sorrowIncreaseRate: 1
+  sorrowIncreaseRate: 4
   timeToIncreaseSorrow: 8
 --- !u!82 &1028291868
 AudioSource:

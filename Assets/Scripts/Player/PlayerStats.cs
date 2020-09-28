@@ -189,10 +189,15 @@ public class PlayerStats : MonoBehaviour
 
     public void TimeSinceLastInteractionReset()
     {
+        if (source.loop == true)
+        {
+            source.loop = false;
+            source.Stop();
+        }
+        
         timeSinceLastInteraction = 0.0f;
         startedToIncreaseSorrow = false;
-        source.loop = false;
-        source.Stop();
+        
     }
 
     void UpdateNotifications()
