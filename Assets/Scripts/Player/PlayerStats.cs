@@ -81,7 +81,7 @@ public class PlayerStats : MonoBehaviour
 
     // time since last interaction
     private float timeSinceLastInteraction = 0.0f;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -102,12 +102,12 @@ public class PlayerStats : MonoBehaviour
         loveBar.SetMax(100, love);
         sorrowBar.SetMax(100, sorrow);
 
-        AIManager.GetInstance().TimeOfGame = Time.time;
+        AIManager.GetInstance().TimeOfGame = 0.0f;
         AIManager.GetInstance().HuggedPuppies = 0;
         AIManager.GetInstance().HuggedSkunks = 0;
         AIManager.GetInstance().HuggedTortoises = 0;
         AIManager.GetInstance().PickedFlowers = 0;
-        AIManager.GetInstance().TimeOfGame = 0;
+        AIManager.GetInstance().HuggedBears = 0;
     }
 
     // Update is called once per frame
@@ -222,7 +222,10 @@ public class PlayerStats : MonoBehaviour
         }
         if (love < speedBuffPercentage)
         {
-            gameObject.GetComponent<PlayerMovement>().RemoveSpeedBuff();
+            if (gameObject.TryGetComponent<PlayerMovement>(out var comp)) 
+            { 
+                comp.RemoveSpeedBuff();
+            }
 
         }
         if (love < dashBuffPercentage)
@@ -239,7 +242,7 @@ public class PlayerStats : MonoBehaviour
         animator.SetBool("IsDying", true);
         GetComponent<Rigidbody2D>().MovePosition(transform.position);
         float timeAtStart = Time.time;
-        AIManager.GetInstance().TimeOfGame = timeAtStart;
+        AIManager.GetInstance().TimeOfGame = Time.timeSinceLevelLoad;
         Debug.Log(AIManager.GetInstance().TimeOfGame);
         while(timeToWait > Time.time - timeAtStart)
         {
